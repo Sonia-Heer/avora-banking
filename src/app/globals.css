@@ -111,7 +111,7 @@
   }
 
   body {
-    @apply bg-black-900 text-foreground font-inter antialiased;
+    @apply font-inter antialiased;
   }
 
   /* Accordion Animations */
@@ -250,6 +250,56 @@
 
   .bank-card_icon {
     @apply absolute flex flex-1 flex-col items-end justify-between top-4 right-4 gap-2 h-[80%];
+  }
+
+  /* Auth Form */
+  .auth-form {
+    @apply flex min-h-screen w-full max-w-[420px] flex-col justify-center gap-5 py-10 md:gap-8;
+  }
+
+  .form-item {
+    @apply flex flex-col gap-1.5;
+  }
+
+  .form-label {
+    @apply text-[14px] w-full max-w-[280px] font-medium text-gray-700;
+  }
+
+  .form-message {
+    @apply text-[12px] text-red-500;
+  }
+
+  .form-btn {
+    @apply text-[16px] rounded-lg border border-bank-gradient bg-bank-gradient font-semibold text-white;
+  }
+
+  .form-link {
+    @apply text-[14px] cursor-pointer font-medium text-bank-gradient;
+  }
+
+  /* Footer */
+  .footer {
+    @apply flex cursor-pointer items-center justify-between gap-2 py-6;
+  }
+
+  .footer_name {
+    @apply flex size-[10px] items-center justify-center rounded-full bg-gray-200 max-xl:hidden;
+  }
+
+  .footer_email {
+    @apply flex flex-1 flex-col justify-center max-xl:hidden;
+  }
+
+  .footer_name-mobile {
+    @apply flex size-[10px] items-center justify-center rounded-full bg-gray-200;
+  }
+
+  .footer_email-mobile {
+    @apply flex flex-1 flex-col justify-center;
+  }
+
+  .footer_image {
+    @apply relative size-[20px] max-xl:w-full max-xl:flex max-xl:justify-center max-xl:items-center;
   }
 
   /* Custom Shadow Utilities */

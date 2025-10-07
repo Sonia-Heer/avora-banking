@@ -16,7 +16,7 @@ const CardBox = ({ user, transactions, banks }: RightSidebarProps) => {
         <BankCard
           key={banks[0].$id}
           account={banks}
-          userName={`${user.firstName} ${user.lastName}`}
+          userName={`${user?.name}`}
           showBalance={true}
         />
       )}

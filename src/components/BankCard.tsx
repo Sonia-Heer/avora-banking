@@ -6,9 +6,9 @@ import Image from "next/image";
 const BankCard = ({ account, userName, showBalance }: CreditCardProps) => {
   return (
     <div className="flex flex-row w-full gap-8 overflow-x-auto no-scrollbar">
-      {account.map((account: object) => {
+      {account.map((account: object, index: number) => {
         return (
-          <div key={account.id} className="bank-card flex-shrink-0 ">
+          <div key={index} className="bank-card flex-shrink-0 ">
             <Link href="/" className="flex">
               <div className="bank-card_content">
                 <p className="font-ibm-plex-serif font-black text-white text-[18px]">
