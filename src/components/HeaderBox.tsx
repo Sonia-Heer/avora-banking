@@ -5,12 +5,12 @@ const HeaderBox = ({
   user,
 }: HeaderBoxProps) => {
   return (
-    <div className="header-box">
-      <div className="header-box-title">
-        <h2 className="text-bank-gradient text-[18px]">{title}</h2>
-        <h1>
-          {type === "greeting" && <span className="text-[24px]">{user}</span>}
-        </h1>
+    <div className="header-box border-b border-gray-400">
+      <div className="header-box-title flex">
+        <h2>
+          {title}
+          {type === "greeting" && user ? `, ${user}` : ""}
+        </h2>
       </div>
       <p className="header-box-subtext">{subtext}</p>
     </div>

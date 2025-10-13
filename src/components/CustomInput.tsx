@@ -24,9 +24,9 @@ const CustomInput = ({ control, name, label, placeholder }: CustomInput) => {
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem>
-          <FormLabel className="text-black">{label}</FormLabel>
-          <FormControl>
+        <FormItem className="gap-2">
+          <FormLabel className="justify-center pt-2">{label}</FormLabel>
+          <FormControl className="rounded-[30px] p-[30px]">
             <Input
               placeholder={placeholder}
               type={name === "password" ? "password" : "text"}

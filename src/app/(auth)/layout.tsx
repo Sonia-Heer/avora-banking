@@ -3,5 +3,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <main>{children}</main>;
+  return (
+    <main className="grid grid-cols-2 h-screen">
+      <div className="auth-asset" />
+      {children}
+    </main>
+  );
 }

@@ -1,9 +1,10 @@
 import AuthForm from "@/components/AuthForm";
 import React from "react";
+import Image from "next/image";
 
 const SignIn = () => {
   return (
-    <section className="flex-center size-full max-sm:px-6 ">
+    <section className="flex items-center justify-center">
       <AuthForm type="sign-in" />
     </section>
   );

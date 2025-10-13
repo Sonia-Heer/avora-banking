@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -14,11 +13,16 @@ import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { signIn, signUp } from "@/lib/actions/user.actions";
 import PlaidLink from "./PlaidLink";
+import ProgressBar from "./ProgressBar";
 
 const AuthForm = ({ type }: { type: string }) => {
   const router = useRouter();
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [step, setStep] = useState<1 | 2 | 3>(1);
+  const [validating, setValidating] = useState(false);
+
+  const goToStep = (newStep: 1 | 2 | 3) => setStep(newStep);
 
   const formSchema = authFormSchema(type);
 
@@ -36,6 +40,7 @@ const AuthForm = ({ type }: { type: string }) => {
       dateOfBirth: "",
       ssn: "",
     },
+    mode: "onTouched",
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
@@ -56,7 +61,7 @@ const AuthForm = ({ type }: { type: string }) => {
       };
 
       if (type === "sign-up") {
-        const newUser = await signUp(data);
+        const newUser = await signUp(userData);
         setUser(newUser);
       }
 
@@ -65,7 +70,6 @@ const AuthForm = ({ type }: { type: string }) => {
           email: data.email,
           password: data.password,
         });
-        console.log(response);
         if (response) router.push("/");
       }
     } catch (error) {
@@ -75,30 +79,41 @@ const AuthForm = ({ type }: { type: string }) => {
     }
   };
 
+  // Fields to validate per step
+  const stepFields = {
+    1: ["firstName", "lastName", "dateOfBirth"],
+    2: ["address1", "city", "state", "postalCode", "ssn"],
+    3: ["email", "password"],
+  } as const;
+
+  const handleNext = async () => {
+    setValidating(true);
+    const fieldsToValidate = stepFields[step];
+    const isValid = await form.trigger(fieldsToValidate as any, {
+      shouldFocus: true,
+    });
+    setValidating(false);
+
+    if (isValid) goToStep((step + 1) as 1 | 2 | 3);
+  };
+
   return (
     <section className="auth-form">
       <header className="flex flex-col gap-5 md:gap-8">
-        <Link href="/" className="mb-12 cursor-pointer flex items-center gap-2">
-          <Image
-            src="/icons/logo.svg"
-            width={34}
-            height={34}
-            alt="Horizon logo"
-            className="size-[24px] max-xl:size-14 text-white"
-          />
-          <h1 className="sidebar-logo">Horizon</h1>
-        </Link>
-        <div className="flex flex-col gap-1 md:gap-3">
+        <div className="flex flex-col text-center justify-center gap-1 md:gap-3">
           <h1 className="text-[24px] lg:text-[36px] font-semibold text-gray-900">
-            {user ? "Link Account" : type === "sign-in" ? "SignIn" : "SignUp"}
+            {user ? "Link Account" : type === "sign-in" ? "Sign In" : "Sign Up"}
           </h1>
           <p className="text-gray-600 text-[16px] font-normal">
             {user
               ? "Link your account to get started"
-              : "Please enter your details"}
+              : "Please enter your details below"}
           </p>
         </div>
       </header>
+
+      {type === "sign-up" && <ProgressBar step={step} totalSteps={3} />}
+
       {user ? (
         <div className="flex flex-col gap-4">
           <PlaidLink user={user} variant="primary" />
@@ -109,101 +124,179 @@ const AuthForm = ({ type }: { type: string }) => {
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
               {type === "sign-up" && (
                 <>
-                  <div className="flex gap-4">
-                    <CustomInput
-                      control={form.control}
-                      name="firstName"
-                      label="First Name"
-                      placeholder="Enter your first name"
-                    />
-                    <CustomInput
-                      control={form.control}
-                      name="lastName"
-                      label="Last Name"
-                      placeholder="Enter your first name"
-                    />
+                  <div className="h-[350px]">
+                    {step === 1 && (
+                      <>
+                        <CustomInput
+                          control={form.control}
+                          name="firstName"
+                          label="First Name"
+                          placeholder="Enter your first name"
+                        />
+                        <CustomInput
+                          control={form.control}
+                          name="lastName"
+                          label="Last Name"
+                          placeholder="Enter your last name"
+                        />
+                        <CustomInput
+                          control={form.control}
+                          name="dateOfBirth"
+                          label="Date of Birth"
+                          placeholder="YYYY-MM-DD"
+                        />
+                      </>
+                    )}
+
+                    {step === 2 && (
+                      <>
+                        <CustomInput
+                          control={form.control}
+                          name="address1"
+                          label="Address"
+                          placeholder="Enter your address"
+                        />
+                        <div className="flex gap-4">
+                          <CustomInput
+                            control={form.control}
+                            name="city"
+                            label="City"
+                            placeholder="Enter your city"
+                          />
+                          <CustomInput
+                            control={form.control}
+                            name="state"
+                            label="State"
+                            placeholder="Example: NY"
+                          />
+                        </div>
+                        <div className="flex gap-4">
+                          <CustomInput
+                            control={form.control}
+                            name="postalCode"
+                            label="Postal Code"
+                            placeholder="Example: 11101"
+                          />
+                          <CustomInput
+                            control={form.control}
+                            name="ssn"
+                            label="SSN"
+                            placeholder="Example: 1234"
+                          />
+                        </div>
+                      </>
+                    )}
+
+                    {step === 3 && (
+                      <>
+                        <CustomInput
+                          control={form.control}
+                          name="email"
+                          label="Email"
+                          placeholder="Enter your email"
+                        />
+                        <CustomInput
+                          control={form.control}
+                          name="password"
+                          label="Password"
+                          placeholder="Enter your password"
+                        />
+                        <div className="flex flex-col gap-4 pt-8">
+                          <Button
+                            type="submit"
+                            disabled={isLoading}
+                            className="form-btn"
+                          >
+                            {isLoading ? (
+                              <>
+                                <Loader2 size={20} className="animate-spin" />
+                                &nbsp;Loading...
+                              </>
+                            ) : (
+                              "Sign Up"
+                            )}
+                          </Button>
+                        </div>
+                      </>
+                    )}
                   </div>
-                  <CustomInput
-                    control={form.control}
-                    name="address1"
-                    label="Address"
-                    placeholder="Enter your specific address"
-                  />
-                  <CustomInput
-                    control={form.control}
-                    name="city"
-                    label="City"
-                    placeholder="Enter your city"
-                  />
-                  <div className="flex gap-4">
-                    <CustomInput
-                      control={form.control}
-                      name="state"
-                      label="State"
-                      placeholder="Example: NY"
-                    />
-                    <CustomInput
-                      control={form.control}
-                      name="postalCode"
-                      label="Postal Code"
-                      placeholder="Example: 11101"
-                    />
-                  </div>
-                  <div className="flex gap-4">
-                    <CustomInput
-                      control={form.control}
-                      name="dateOfBirth"
-                      label="Date of Birth"
-                      placeholder="YYYY-MM-DD"
-                    />
-                    <CustomInput
-                      control={form.control}
-                      name="ssn"
-                      label="SSN"
-                      placeholder="Example: 1234"
-                    />
+
+                  {/* Step navigation */}
+                  <div className="flex justify-between">
+                    {step > 1 && (
+                      <Button
+                        type="button"
+                        className="form-btn"
+                        onClick={() => goToStep((step - 1) as 1 | 2 | 3)}
+                      >
+                        Back
+                      </Button>
+                    )}
+
+                    {step < 3 && (
+                      <Button
+                        type="button"
+                        className="form-btn"
+                        onClick={handleNext}
+                        disabled={validating}
+                      >
+                        {validating ? (
+                          <>
+                            <Loader2 size={18} className="animate-spin" />
+                            &nbsp;Checking...
+                          </>
+                        ) : (
+                          "Next"
+                        )}
+                      </Button>
+                    )}
                   </div>
                 </>
               )}
 
-              <CustomInput
-                control={form.control}
-                name="email"
-                label="Email"
-                placeholder="Enter your email"
-              />
-
-              <CustomInput
-                control={form.control}
-                name="password"
-                label="Password"
-                placeholder="Enter your password"
-              />
-
-              <div className="flex flex-col gap-4">
-                <Button type="submit" disabled={isLoading} className="form-btn">
-                  {isLoading ? (
-                    <>
-                      <Loader2 size={20} className="animate-spin" />
-                      &nbsp;Loading...
-                    </>
-                  ) : type === "sign-in" ? (
-                    "signin"
-                  ) : (
-                    "signup"
-                  )}
-                </Button>
-              </div>
+              {type === "sign-in" && (
+                <>
+                  <CustomInput
+                    control={form.control}
+                    name="email"
+                    label="Email"
+                    placeholder="Enter your email"
+                  />
+                  <CustomInput
+                    control={form.control}
+                    name="password"
+                    label="Password"
+                    placeholder="Enter your password"
+                  />
+                  <div className="flex flex-col gap-4">
+                    <Button
+                      type="submit"
+                      disabled={isLoading}
+                      className="form-btn"
+                    >
+                      {isLoading ? (
+                        <>
+                          <Loader2 size={20} className="animate-spin" />
+                          &nbsp;Loading...
+                        </>
+                      ) : (
+                        "Sign In"
+                      )}
+                    </Button>
+                  </div>
+                </>
+              )}
             </form>
           </Form>
-          <footer className="flex justify-center gap-1">
+
+          <footer className="absolute top-0 right-0 flex items-center gap-1 p-8">
             <p>
               {type === "sign-in"
                 ? "Don't have an account?"
                 : "Already have an account?"}
             </p>
             <Link
-              href={type === "sign-in" ? "/sign-up" : "/sign-in "}
+              href={type === "sign-in" ? "/sign-up" : "/sign-in"}
               className="form-link"
             >
               {type === "sign-in" ? "Sign Up" : "Sign In"}

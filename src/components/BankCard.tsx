@@ -3,7 +3,7 @@ import Link from "next/link";
 import { formatAmount } from "@/lib/utils";
 import Image from "next/image";
 
-const BankCard = ({ account, userName, showBalance }: CreditCardProps) => {
+const BankCard = ({ account, user, showBalance }: CreditCardProps) => {
   return (
     <div className="flex flex-row w-full gap-8 overflow-x-auto no-scrollbar">
       {account.map((account: object, index: number) => {
@@ -17,7 +17,7 @@ const BankCard = ({ account, userName, showBalance }: CreditCardProps) => {
                 <article className="flex flex-col gap-2">
                   <div className="flex justify-between">
                     <h1 className="text-[12px] font-semibold text-white">
-                      {userName}
+                      {user.firstName}
                     </h1>
                     <h2 className="text-[12px] font-semibold text-white">
                       ** / **

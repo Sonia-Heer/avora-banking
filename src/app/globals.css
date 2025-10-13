@@ -4,7 +4,7 @@
 
 @theme {
   /* Base Colors */
-  --color-background: oklch(0.98 0 0);
+  --color-background: #f6f6f6;
   --color-foreground: oklch(0.15 0 0);
   --color-muted: oklch(0.96 0 0);
   --color-muted-foreground: oklch(0.45 0 0);
@@ -25,41 +25,20 @@
   /* Fill Colors */
   --color-fill-1: rgba(255, 255, 255, 0.1);
 
-  /* Indigo */
-  --color-indigo-500: #6172f3;
-  --color-indigo-700: #3538cd;
-
   /* Success (Green) */
-  --color-success-25: #f6fef9;
-  --color-success-50: #ecfdf3;
-  --color-success-100: #d1fadf;
-  --color-success-600: #039855;
-  --color-success-700: #027a48;
-  --color-success-900: #054f31;
-
-  /* Pink */
-  --color-pink-25: #fef6fb;
-  --color-pink-100: #fce7f6;
-  --color-pink-500: #ee46bc;
-  --color-pink-600: #dd2590;
-  --color-pink-700: #c11574;
-  --color-pink-900: #851651;
-
-  /* Blue */
-  --color-blue-25: #f5faff;
-  --color-blue-100: #d1e9ff;
-  --color-blue-500: #2e90fa;
-  --color-blue-600: #1570ef;
-  --color-blue-700: #175cd3;
-  --color-blue-900: #194185;
-
-  /* Sky */
-  --color-sky-1: #f3f9ff;
+  --color-green-25: #f6fef9;
+  --color-green-50: #e3fff5;
+  --color-green-100: #51a687;
+  --color-green-600: #039855;
+  --color-green-700: #027a48;
+  --color-green-900: #06402b;
 
   /* Black */
   --color-black-1: #00214f;
   --color-black-2: #344054;
   --color-black-900: #141820;
+
+  --color-white-1: #ffffff;
 
   /* Gray */
   --color-gray-25: #fcfcfd;
@@ -145,12 +124,16 @@
     @apply flex h-[16px] items-center justify-between p-5  sm:p-8 md:hidden;
   }
 
+  .auth-asset {
+    @apply flex items-center bg-[url(/placeholder.jpg)] bg-cover bg-center;
+  }
+
   .home {
     @apply flex w-full flex-row max-xl:max-h-screen max-xl:overflow-y-scroll;
   }
 
   .home-content {
-    @apply flex w-full flex-1 flex-col gap-8 px-5 sm:px-8 py-7 lg:py-12 xl:max-h-screen xl:overflow-y-scroll;
+    @apply flex w-full flex-1 flex-col gap-8 px-8 sm:px-8 py-7 lg:py-8 xl:max-h-screen xl:overflow-y-scroll;
   }
 
   .home-header {
@@ -185,44 +168,19 @@
 
   /* Sidebar */
   .sidebar {
-    @apply sticky left-0 top-0 pl-6 flex h-screen w-fit flex-col  justify-between pt-8 text-white max-md:hidden  2xl:w-[355px];
+    @apply sticky left-0 top-0 flex h-screen w-fit flex-col justify-between border-r border-gray-200 bg-white pt-8 text-white max-md:hidden sm:p-4 xl:p-6 2xl:w-[325px];
   }
 
   .sidebar-logo {
-    @apply 2xl:text-[26px] font-ibm-plex-serif text-[26px] font-bold text-background max-xl:hidden;
+    @apply 2xl:text-[22px] font-ibm-plex-serif text-[22px] font-bold text-black-1 max-xl:hidden;
   }
 
   .sidebar-link {
-    @apply flex gap-3 items-center py-1 md:p-6 md:pr-12 rounded-l-2xl  justify-center xl:justify-start;
-  }
-
-  .inverted-radius-top.active {
-    @apply bg-pink-25 relative left-0 h-[20px] top-[16px];
-  }
-  .inverted-radius-bottom.active {
-    @apply bg-pink-25 relative left-0 h-[20px] bottom-[16px];
-  }
-
-  .inverted-radius-top.active:before,
-  .inverted-radius-bottom.active:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 20;
-    width: 100%;
-    height: 100%;
-    background-color: #141820;
-  }
-
-  .inverted-radius-top.active:before {
-    border-bottom-right-radius: 25px;
-  }
-  .inverted-radius-bottom.active:before {
-    border-top-right-radius: 25px;
+    @apply flex gap-3 items-center py-1 md:p-3 2xl:p-4 rounded-lg justify-center xl:justify-start;
   }
 
   .sidebar-label {
-    @apply text-[16px] font-semibold text-background max-xl:hidden;
+    @apply text-[14px] font-semibold text-black-2 max-xl:hidden;
   }
 
   /* Mobile nav */
@@ -257,6 +215,10 @@
     @apply flex min-h-screen w-full max-w-[420px] flex-col justify-center gap-5 py-10 md:gap-8;
   }
 
+  input.form-input {
+    @apply bg-pink-900;
+  }
+
   .form-item {
     @apply flex flex-col gap-1.5;
   }
@@ -270,20 +232,20 @@
   }
 
   .form-btn {
-    @apply text-[16px] rounded-lg border border-bank-gradient bg-bank-gradient font-semibold text-white;
+    @apply text-[16px] rounded-[30px] p-[30px]  bg-green-900 font-semibold text-white cursor-pointer;
   }
 
   .form-link {
-    @apply text-[14px] cursor-pointer font-medium text-bank-gradient;
+    @apply text-[14px] cursor-pointer font-medium text-green-900;
   }
 
   /* Footer */
   .footer {
-    @apply flex cursor-pointer items-center justify-between gap-2 py-6;
+    @apply flex cursor-pointer items-center justify-between gap-4 py-6;
   }
 
   .footer_name {
-    @apply flex size-[10px] items-center justify-center rounded-full bg-gray-200 max-xl:hidden;
+    @apply flex items-center justify-center rounded-full bg-gray-200 max-xl:hidden;
   }
 
   .footer_email {
