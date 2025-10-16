@@ -13,6 +13,7 @@ import { plaidClient } from "../plaid";
 import { parseStringify } from "../utils";
 
 // import { getTransactionsByBankId } from "./transaction.actions";
+
 import { getBanks, getBank } from "./user.actions";
 
 // Get multiple bank accounts
@@ -45,7 +46,7 @@ export const getAccounts = async ({ userId }: getAccountsProps) => {
           type: accountData.type as string,
           subtype: accountData.subtype! as string,
           appwriteItemId: bank.$id,
-          shareableId: bank.shareableId,
+          sharaebleId: bank.shareableId,
         };
 
         return account;
@@ -73,8 +74,7 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
     const accountsResponse = await plaidClient.accountsGet({
       access_token: bank.accessToken,
     });
-
-    const accountData = accountsResponse.data.accounts[1];
+    const accountData = accountsResponse.data.accounts[0];
 
     // get transfer transactions from appwrite
     // const transferTransactionsData = await getTransactionsByBankId({
@@ -99,7 +99,7 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
     });
 
     const transactions = await getTransactions({
-      accessToken: bank.accessToken,
+      accessToken: bank?.accessToken,
     });
 
     const account = {
@@ -182,46 +182,5 @@ export const getTransactions = async ({
     return parseStringify(transactions);
   } catch (error) {
     console.error("An error occurred while getting the accounts:", error);
-  }
-};
-
-// Create Transfer
-export const createTransfer = async () => {
-  const transferAuthRequest: TransferAuthorizationCreateRequest = {
-    access_token: "access-sandbox-cddd20c1-5ba8-4193-89f9-3a0b91034c25",
-    account_id: "Zl8GWV1jqdTgjoKnxQn1HBxxVBanm5FxZpnQk",
-    funding_account_id: "442d857f-fe69-4de2-a550-0c19dc4af467",
-    type: "credit" as TransferType,
-    network: "ach" as TransferNetwork,
-    amount: "10.00",
-    ach_class: "ppd" as ACHClass,
-    user: {
-      legal_name: "Anne Charleston",
-    },
-  };
-  try {
-    const transferAuthResponse = await plaidClient.transferAuthorizationCreate(
-      transferAuthRequest
-    );
-    const authorizationId = transferAuthResponse.data.authorization.id;
-
-    const transferCreateRequest: TransferCreateRequest = {
-      access_token: "access-sandbox-cddd20c1-5ba8-4193-89f9-3a0b91034c25",
-      account_id: "Zl8GWV1jqdTgjoKnxQn1HBxxVBanm5FxZpnQk",
-      description: "payment",
-      authorization_id: authorizationId,
-    };
-
-    const responseCreateResponse = await plaidClient.transferCreate(
-      transferCreateRequest
-    );
-
-    const transfer = responseCreateResponse.data.transfer;
-    return parseStringify(transfer);
-  } catch (error) {
-    console.error(
-      "An error occurred while creating transfer authorization:",
-      error
-    );
   }
 };
