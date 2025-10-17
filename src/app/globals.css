@@ -49,6 +49,33 @@
   --color-gray-700: #344054;
   --color-gray-900: #101828;
 
+  /* Pink */
+  --color-pink-25: #fdf2f8;
+  --color-pink-200: #fbcfe8;
+  --color-pink-300: #f9a8d4;
+  --color-pink-500: #ec4899;
+  --color-pink-600: #db2777;
+  --color-pink-700: #be185d;
+  --color-pink-900: #831843;
+
+  /* Purple */
+  --color-purple-25: #faf5ff;
+  --color-purple-200: #e9d5ff;
+  --color-purple-300: #d8b4fe;
+  --color-purple-500: #a855f7;
+  --color-purple-600: #9333ea;
+  --color-purple-700: #7e22ce;
+  --color-purple-900: #581c87;
+
+  /* Orange */
+  --color-orange-25: #fff7ed;
+  --color-orange-200: #fed7aa;
+  --color-orange-300: #fdba74;
+  --color-orange-500: #f97316;
+  --color-orange-600: #ea580c;
+  --color-orange-700: #c2410c;
+  --color-orange-900: #7c2d12;
+
   /* Background Images / Gradients */
   --background-image-bank-gradient: linear-gradient(
     90deg,
@@ -133,7 +160,7 @@
   }
 
   .home-content {
-    @apply flex w-full flex-1 flex-col gap-8 px-8 sm:px-8 py-7 lg:py-8 xl:max-h-screen xl:overflow-y-scroll;
+    @apply flex w-full flex-1 flex-col gap-8 px-8 sm:px-8 pb-7 lg:pb-8 xl:max-h-screen xl:overflow-y-scroll;
   }
 
   .home-header {
@@ -141,7 +168,7 @@
   }
 
   .header-box {
-    @apply flex flex-col gap-1 leading-10;
+    @apply flex flex-col leading-5;
   }
 
   .header-box-title {
@@ -151,7 +178,7 @@
   /* Total Balance */
 
   .total-balance {
-    @apply flex w-full items-center gap-4 rounded-xl border border-gray-200 p-4 shadow-chart sm:gap-6 sm:p-6;
+    @apply flex flex-col w-full items-center gap-4 rounded-xl bg-white-1 p-4 sm:gap-6 sm:p-6;
   }
 
   .total-balance-chart {
@@ -198,6 +225,10 @@
   }
 
   /* Bank Card */
+  .banks {
+    @apply rounded-xl bg-white-1 p-4 sm:gap-6 sm:p-6 w-[100%];
+  }
+
   .bank-card {
     @apply relative flex w-full h-[190px] max-w-[320px] rounded-[20px] border border-white bg-bank-gradient backdrop-blur-[6px];
   }
@@ -262,6 +293,30 @@
 
   .footer_image {
     @apply relative size-[20px] max-xl:w-full max-xl:flex max-xl:justify-center max-xl:items-center;
+  }
+
+  .recent-transactions {
+    @apply flex w-full flex-col gap-6;
+  }
+
+  /* .view-all-btn {
+    @apply text-14 rounded-lg border border-gray-300 px-4 py-2 font-semibold text-gray-700;
+  } */
+
+  .recent-transactions {
+    @apply flex w-full flex-col gap-6;
+  }
+
+  .recent-transactions-label {
+    @apply text-[20px] md:text-[24px] font-semibold text-gray-900;
+  }
+
+  .recent-transactions-tablist {
+    @apply mb-8 flex w-full flex-nowrap;
+  }
+
+  .banktab-item {
+    @apply gap-[18px] border-b-2 flex px-2 sm:px-4 py-2 transition-all;
   }
 
   /* Custom Shadow Utilities */
