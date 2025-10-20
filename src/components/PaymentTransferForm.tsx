@@ -81,7 +81,6 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
           email: data.email,
         };
 
-        console.log(transaction);
         const newTransaction = await createTransaction(transaction);
 
         if (newTransaction) {
