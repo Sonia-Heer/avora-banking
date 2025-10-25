@@ -21,7 +21,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
   const pathname = usePathname();
 
   return (
-    <section className="w-full max-w-[264px]">
+    <section className="w-full max-w-[264px] ">
       <Sheet>
         <SheetTrigger>
           <Image
@@ -32,7 +32,10 @@ const MobileNav = ({ user }: MobileNavProps) => {
             className="cursor-pointer"
           />
         </SheetTrigger>
-        <SheetContent side="right" className="border-none bg-white px-6 py-10">
+        <SheetContent
+          side="right"
+          className="border-none bg-white px-6 py-10 z-1000"
+        >
           <SheetTitle>
             <Link
               href="/"

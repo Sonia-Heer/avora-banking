@@ -11,25 +11,23 @@ const MyBanks = async () => {
   });
 
   return (
-    <section className="flex">
-      <div className="my-banks">
-        <HeaderBox
-          title="My Bank Accounts"
-          subtext="Effortlessly manage your banking activites."
-        />
+    <section className=" h-screen max-xl:max-h-screen text-white md:rounded-l-4xl">
+      <HeaderBox
+        title="Accounts"
+        subtext="Effortlessly manage your banking activites."
+      />
 
-        <div className="space-y-4">
-          <h2 className="header-2">Your cards</h2>
-          <div className="flex flex-wrap gap-6">
-            {accounts &&
-              accounts.data.map((account: Account, index: number) => (
-                <BankCard
-                  key={index}
-                  account={account}
-                  userName={loggedIn?.firstName}
-                />
-              ))}
-          </div>
+      <div className="p-6 flex justify-center flex-col">
+        <h2 className="text-lg font-semibold text-gray-900 pb-4">Your cards</h2>
+        <div className="flex flex-wrap gap-6">
+          {accounts &&
+            accounts.data.map((account: Account, index: number) => (
+              <BankCard
+                key={index}
+                account={account}
+                userName={loggedIn?.firstName}
+              />
+            ))}
         </div>
       </div>
     </section>

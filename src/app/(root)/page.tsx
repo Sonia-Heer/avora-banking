@@ -28,7 +28,7 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
   const banks = accountsData.slice(0, 2);
 
   return (
-    <section className="h-screen max-xl:max-h-screen text-white md:rounded-l-4xl">
+    <section className="h-screen max-xl:max-h-screen text-white md:rounded-l-4xl bg-[#f6f6f6]">
       <HeaderBox
         type="greeting"
         title="Welcome back"
@@ -52,7 +52,7 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-4 px-6 bg-gray-100 pb-6">
+      <div className="flex flex-col lg:flex-row gap-4 px-6 bg-[#f6f6f6] pb-6">
         <div className="flex flex-col gap-4 w-full lg:w-1/3">
           <section className="pb-10">
             {banks.length > 0 && (
