@@ -11,13 +11,13 @@ const MyBanks = async () => {
   });
 
   return (
-    <section className=" h-screen max-xl:max-h-screen text-white md:rounded-l-4xl">
+    <section className="h-screen max-xl:max-h-screen text-white md:rounded-l-4xl">
       <HeaderBox
         title="Accounts"
         subtext="Effortlessly manage your banking activites."
       />
 
-      <div className="p-6 flex justify-center flex-col">
+      <div className="p-6 ">
         <h2 className="text-lg font-semibold text-gray-900 pb-4">Your cards</h2>
         <div className="flex flex-wrap gap-6">
           {accounts &&
