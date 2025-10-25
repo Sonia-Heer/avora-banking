@@ -79,7 +79,7 @@ export function formatAmount(amount: number): string {
 export const parseStringify = (value: any) => JSON.parse(JSON.stringify(value));
 
 export const removeSpecialCharacters = (value: string) => {
-  return value.replace(/[^\w\s]/gi, "");
+  return value.replace(/[^a-zA-Z0-9\s]/g, " ").toLowerCase();
 };
 
 interface UrlQueryParams {
@@ -92,26 +92,26 @@ export function getAccountTypeColors(type: AccountTypes) {
   switch (type) {
     case "depository":
       return {
-        bg: "bg-blue-25",
-        lightBg: "bg-blue-100",
-        title: "text-blue-900",
-        subText: "text-blue-700",
+        bg: "bg-purple-25",
+        lightBg: "bg-purple-100",
+        title: "text-purple-900",
+        subText: "text-purple-700",
       };
 
     case "credit":
       return {
-        bg: "bg-success-25",
-        lightBg: "bg-success-100",
-        title: "text-success-900",
-        subText: "text-success-700",
+        bg: "bg-violet-25",
+        lightBg: "bg-violet-100",
+        title: "text-violet-900",
+        subText: "text-violet-700",
       };
 
     default:
       return {
-        bg: "bg-green-25",
-        lightBg: "bg-green-100",
-        title: "text-green-900",
-        subText: "text-green-700",
+        bg: "bg-fuchsia-25",
+        lightBg: "bg-fuchsia-100",
+        title: "text-fuchsia-900",
+        subText: "text-fuchsia-700",
       };
   }
 }
@@ -143,7 +143,7 @@ export function countTransactionCategories(
   // Convert the categoryCounts object to an array of objects
   const aggregatedCategories: CategoryCount[] = Object.keys(categoryCounts).map(
     (category) => ({
-      name: category,
+      name: removeSpecialCharacters(category),
       count: categoryCounts[category],
       totalCount,
     })

@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
-
 import {
   cn,
   formUrlQuery,
@@ -30,40 +29,63 @@ const BankInfo = ({ account, appwriteItemId, type }: BankInfoProps) => {
   return (
     <div
       onClick={handleBankChange}
-      className={cn(`bank-info ${colors.bg}`, {
-        "shadow-sm border-blue-700": type === "card" && isActive,
-        "rounded-xl": type === "card",
-        "hover:shadow-sm cursor-pointer": type === "card",
-      })}
+      className={cn(
+        "flex items-center gap-4 p-4 transition-all duration-200",
+        "bg-white rounded-xl border cursor-pointer hover:shadow-md hover:-translate-y-0.5",
+        isActive
+          ? "border-purple-600 ring-2 ring-purple-100"
+          : "border-gray-200",
+        type === "card" && "max-w-sm"
+      )}
     >
+      {/* Bank Icon */}
       <figure
-        className={`flex-center h-fit rounded-full bg-blue-100 ${colors.lightBg}`}
+        className={cn(
+          "flex justify-center items-center h-12 w-12 rounded-full bg-purple-50 flex-shrink-0",
+          colors.lightBg
+        )}
       >
         <Image
           src="/icons/connect-bank.svg"
-          width={20}
-          height={20}
+          width={22}
+          height={22}
           alt={account.subtype}
-          className="m-2 min-w-5"
+          className="opacity-80"
         />
       </figure>
-      <div className="flex w-full flex-1 flex-col justify-center gap-1">
-        <div className="bank-info_content">
+
+      {/* Bank Info */}
+      <div className="flex w-full flex-col justify-center">
+        <div className="flex items-center justify-between">
           <h2
-            className={`text-16 line-clamp-1 flex-1 font-bold text-blue-900 ${colors.title}`}
+            className={cn(
+              "font-semibold text-gray-900 truncate text-base",
+              colors.title
+            )}
           >
             {account.name}
           </h2>
+
           {type === "full" && (
-            <p
-              className={`text-12 rounded-full px-3 py-1 font-medium text-blue-700 ${colors.subText} ${colors.lightBg}`}
+            <span
+              className={cn(
+                "ml-2 rounded-full px-3 py-1 text-xs font-medium",
+                "bg-purple-100 text-purple-800",
+                colors.subText,
+                colors.lightBg
+              )}
             >
               {account.subtype}
-            </p>
+            </span>
           )}
         </div>
 
-        <p className={`text-16 font-medium text-blue-700 ${colors.subText}`}>
+        <p
+          className={cn(
+            "mt-1 text-sm font-medium text-gray-700",
+            colors.subText
+          )}
+        >
           {formatAmount(account.currentBalance)}
         </p>
       </div>

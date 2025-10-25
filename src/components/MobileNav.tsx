@@ -21,7 +21,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
   const pathname = usePathname();
 
   return (
-    <section className="w-fulll max-w-[264px]">
+    <section className="w-full max-w-[264px]">
       <Sheet>
         <SheetTrigger>
           <Image
@@ -32,26 +32,20 @@ const MobileNav = ({ user }: MobileNavProps) => {
             className="cursor-pointer"
           />
         </SheetTrigger>
-        <SheetContent side="right" className="border-none bg-white">
+        <SheetContent side="right" className="border-none bg-white px-6 py-10">
           <SheetTitle>
             <Link
               href="/"
               className="cursor-pointer flex items-center gap-1 px-4"
             >
-              <Image
-                src="/icons/logo.svg"
-                width={34}
-                height={34}
-                alt="Horizon logo"
-              />
-              <h1 className="text-26 font-ibm-plex-serif font-bold text-black-1">
-                Horizon
+              <h1 className="text-[26px] font-ibm-plex-serif font-bold text-black-1">
+                Avora Banking
               </h1>
             </Link>
           </SheetTitle>
           <div className="mobilenav-sheet">
             <SheetClose asChild>
-              <nav className="flex h-full flex-col gap-6 pt-16 text-white items-center">
+              <nav className="flex h-full flex-col gap-6 pt-16 items-center">
                 {sidebarLinks.map((item) => {
                   const isActive =
                     pathname === item.route ||
@@ -63,7 +57,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
                         href={item.route}
                         key={item.label}
                         className={cn("mobilenav-sheet_close w-full", {
-                          "bg-bank-gradient": isActive,
+                          "bg-purple-25 ": isActive,
                         })}
                       >
                         <Image
@@ -71,13 +65,14 @@ const MobileNav = ({ user }: MobileNavProps) => {
                           alt={item.label}
                           width={20}
                           height={20}
-                          className={cn({
+                          className={cn("text-purple-800", {
                             "brightness-[3] invert-0": isActive,
                           })}
                         />
+
                         <p
                           className={cn("text-16 font-semibold text-black-2", {
-                            "text-white": isActive,
+                            "text-purple-800": isActive,
                           })}
                         >
                           {item.label}
@@ -86,7 +81,6 @@ const MobileNav = ({ user }: MobileNavProps) => {
                     </SheetClose>
                   );
                 })}
-                USER
               </nav>
             </SheetClose>
             <Footer user={user} type="mobile" />

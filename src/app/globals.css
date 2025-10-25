@@ -4,7 +4,7 @@
 
 @theme {
   /* Base Colors */
-  --color-background: #f6f6f6;
+  --color-background: #ffffff;
   --color-foreground: oklch(0.15 0 0);
   --color-muted: oklch(0.96 0 0);
   --color-muted-foreground: oklch(0.45 0 0);
@@ -12,7 +12,7 @@
   --color-ring: oklch(0.7 0.15 250);
 
   /* Custom Brand Colors */
-  --color-primary: oklch(0.55 0.2 250);
+  --color-primary: #51087e;
   --color-primary-foreground: oklch(0.98 0 0);
   --color-secondary: oklch(0.65 0.15 180);
   --color-accent: oklch(0.72 0.11 178);
@@ -25,18 +25,10 @@
   /* Fill Colors */
   --color-fill-1: rgba(255, 255, 255, 0.1);
 
-  /* Success (Green) */
-  --color-green-25: #f6fef9;
-  --color-green-50: #e3fff5;
-  --color-green-100: #51a687;
-  --color-green-600: #039855;
-  --color-green-700: #027a48;
-  --color-green-900: #06402b;
-
   /* Black */
   --color-black-1: #00214f;
   --color-black-2: #344054;
-  --color-black-900: #141820;
+  --color-black-900: #000000;
 
   --color-white-1: #ffffff;
 
@@ -59,13 +51,13 @@
   --color-pink-900: #831843;
 
   /* Purple */
-  --color-purple-25: #faf5ff;
-  --color-purple-200: #e9d5ff;
+  --color-purple-25: #cec2eb;
+  --color-purple-200: #c576f6;
   --color-purple-300: #d8b4fe;
   --color-purple-500: #a855f7;
-  --color-purple-600: #9333ea;
-  --color-purple-700: #7e22ce;
-  --color-purple-900: #581c87;
+  --color-purple-600: #880ed4;
+  --color-purple-700: #6c0ba9;
+  --color-purple-900: #51087e;
 
   /* Orange */
   --color-orange-25: #fff7ed;
@@ -148,23 +140,11 @@
 @layer utilities {
   /* Root Layout */
   .root-layout {
-    @apply flex h-[16px] items-center justify-between p-5  sm:p-8 md:hidden;
+    @apply flex h-[70px] items-center justify-between p-5  sm:p-8 md:hidden;
   }
 
   .auth-asset {
     @apply flex items-center bg-[url(/placeholder.jpg)] bg-cover bg-center;
-  }
-
-  .home {
-    @apply flex w-full flex-row max-xl:max-h-screen max-xl:overflow-y-scroll;
-  }
-
-  .home-content {
-    @apply flex w-full flex-1 flex-col gap-8 px-8 sm:px-8 pb-7 lg:pb-8 xl:max-h-screen xl:overflow-y-scroll;
-  }
-
-  .home-header {
-    @apply flex flex-col justify-between gap-8;
   }
 
   .header-box {
@@ -177,25 +157,12 @@
 
   /* Total Balance */
 
-  .total-balance {
-    @apply flex flex-col w-full items-center gap-4 rounded-xl bg-white-1 p-4 sm:gap-6 sm:p-6;
-  }
-
-  .total-balance-chart {
-    @apply flex size-full max-w-[100px] items-center sm:max-w-[120px];
-  }
-
   .total-balance-label {
     @apply text-[14px] font-medium text-gray-600;
   }
 
   .total-balance-amount {
     @apply text-[24px] lg:text-[30px] flex-1 font-semibold text-gray-900;
-  }
-
-  /* Sidebar */
-  .sidebar {
-    @apply sticky left-0 top-0 flex h-screen w-fit flex-col justify-between border-r border-gray-200 bg-white pt-8 text-white max-md:hidden sm:p-4 xl:p-6 2xl:w-[325px];
   }
 
   .sidebar-logo {
@@ -225,22 +192,14 @@
   }
 
   /* Bank Card */
-  .banks {
-    @apply rounded-xl bg-white-1 p-4 sm:gap-6 sm:p-6 w-[100%];
-  }
-
-  .bank-card {
-    @apply relative flex w-full h-[190px] max-w-[320px] rounded-[20px] border border-white bg-bank-gradient backdrop-blur-[6px];
-  }
 
   .bank-card_content {
-    @apply relative z-10 flex h-full w-[100%] flex-col justify-between rounded-[20px] px-5 pb-4 pt-5 bg-bank-gradient;
+    @apply relative z-10 flex size-full max-w-[228px] flex-col justify-between rounded-l-[20px] bg-black-900 px-5 pb-4 pt-5;
   }
 
   .bank-card_icon {
-    @apply absolute flex flex-1 flex-col items-end justify-between top-4 right-4 gap-2 h-[80%];
+    @apply flex size-full flex-1 flex-col items-end justify-between rounded-r-[20px] bg-purple-25 bg-cover bg-center bg-no-repeat py-5 pr-5;
   }
-
   /* Auth Form */
   .auth-form {
     @apply flex min-h-screen w-full max-w-[420px] flex-col justify-center gap-5 py-10 md:gap-8;
@@ -305,14 +264,6 @@
 
   .recent-transactions {
     @apply flex w-full flex-col gap-6;
-  }
-
-  .recent-transactions-label {
-    @apply text-[20px] md:text-[24px] font-semibold text-gray-900;
-  }
-
-  .recent-transactions-tablist {
-    @apply mb-8 flex w-full flex-nowrap;
   }
 
   .banktab-item {
