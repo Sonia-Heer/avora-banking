@@ -22,7 +22,7 @@ const Transfer = async () => {
         subtext="Please provide any specific details or notes related to the payment transfer"
       />
 
-      <section className="size-full pt-5 max-w-[1450px] mx-auto">
+      <section className="size-full pt-5 max-w-[1650px] mx-auto p-6 md:p-20">
         <PaymentTransferForm accounts={accountsData} />
       </section>
     </section>

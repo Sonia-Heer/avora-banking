@@ -90,7 +90,7 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
   };
 
   return (
-    <section className="flex flex-col bg-white p-8 text-gray-800">
+    <section className="flex flex-col bg-white text-gray-800">
       <h2 className="text-2xl font-bold text-purple-800 mb-2">
         Transfer Funds
       </h2>

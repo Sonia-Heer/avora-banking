@@ -38,8 +38,8 @@ const TransactionHistory = async ({
         title="Transaction History"
         subtext="See your bank details and transactions."
       />
-      <div className="max-w-[1450px] mx-auto">
-        <section className="flex flex-col md:flex-row justify-between items-start gap-6 rounded-[20px] bg-white text-gray-800 border border-purple-600 ring-2 ring-purple-100 hover:shadow-md hover:-translate-y-0.5 rounded-xl bg-white text-purple-800 m-6 p-6">
+      <div className="max-w-[1650px] mx-auto px-6 md:px-20">
+        <section className="flex flex-col md:flex-row justify-between items-start gap-6 rounded-[20px] bg-white text-gray-800 border border-purple-600 ring-2 ring-purple-100 hover:shadow-md hover:-translate-y-0.5 rounded-xl bg-white text-purple-800 p-6 my-6 md:my-10">
           <div className="flex flex-col gap-3">
             <h2 className="text-xl font-semibold text-purple-800 tracking-tight">
               {account?.data.name}
@@ -65,7 +65,7 @@ const TransactionHistory = async ({
           </div>
         </section>
 
-        <section className="flex w-full flex-col gap-6 p-6">
+        <section className="flex w-full flex-col gap-6 pb-20">
           <TransactionsTable transactions={currentTransactions} />
 
           {totalPages > 1 && (

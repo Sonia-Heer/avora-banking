@@ -17,7 +17,7 @@ const MyBanks = async () => {
         subtext="Effortlessly manage your banking activites."
       />
 
-      <div className="p-6 max-w-[1450px] mx-auto">
+      <div className="p-6 md:p-20 max-w-[1650px] mx-auto">
         <h2 className="text-lg font-semibold text-gray-900 pb-4">Your cards</h2>
         <div className="flex flex-wrap gap-6">
           {accounts &&

@@ -5,14 +5,15 @@ const HeaderBox = ({
   user,
 }: HeaderBoxProps) => {
   return (
-    <header className="flex flex-col items-center justify-center h-[30%] max-h-[260px] bg-black px-6 gap-2 pt-15">
-      <div className="font-semibold">
-        <h2 className="capitalize text-[30px]">
+    <header className="flex flex-col justify-center items-center h-[40%] bg-black gap-2 pt-15">
+      <div className="max-w-[1650px] w-full pt-40 px-6 md:px-20">
+        <h2 className="capitalize font-semibold text-[30px]">
           {title}
           {type === "greeting" && user ? `, ${user}` : ""}
         </h2>
+
+        <p className="header-box-subtext text-[15px]">{subtext}</p>
       </div>
-      <p className="header-box-subtext text-[15px]">{subtext}</p>
     </header>
   );
 };

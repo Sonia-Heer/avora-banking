@@ -41,14 +41,14 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
           background: "linear-gradient(to bottom, black 10%, #f6f6f6 10%)",
         }}
       >
-        <div className="max-w-[1450px] mx-auto px-6 pb-20 flex flex-col gap-6 md:gap-10">
+        <div className="max-w-[1650px] mx-auto px-6 md:px-20 pb-20 flex flex-col gap-6 md:gap-10">
           <div className="flex flex-col md:flex-row gap-6 md:gap-10">
             <TotalBalanceBox
               accounts={accounts.data}
               totalBanks={accounts.totalBanks}
               totalCurrentBalance={accounts.totalCurrentBalance}
             />
-            <div className="text-gray-800 flex items-center justify-center flex-1 bg-pink-900">
+            <div className="text-gray-800 flex items-center justify-center flex-1 bg-white rounded-[20px] shadow-xl">
               Placeholder
             </div>
           </div>
