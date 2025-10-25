@@ -54,7 +54,7 @@ const DoughnutChart = ({ accounts }: DoughnutChartProps) => {
   };
 
   return (
-    <div className="relative flex items-center justify-center w-[300px] h-[250px]">
+    <div className="relative flex items-center justify-center w-[200px] h-[250px] mx-auto">
       <Doughnut data={data} options={options} />
     </div>
   );

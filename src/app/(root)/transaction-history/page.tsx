@@ -33,49 +33,48 @@ const TransactionHistory = async ({
     indexOfLastTransaction
   );
   return (
-    <div className="h-screen max-xl:max-h-screen text-white md:rounded-l-4xl">
+    <div className="h-screen max-xl:max-h-screen text-white">
       <HeaderBox
         title="Transaction History"
         subtext="See your bank details and transactions."
       />
-
-      {/* Account Summary Card */}
-      <section className="flex flex-col md:flex-row justify-between items-start gap-6 rounded-[20px] bg-white text-gray-800 border border-purple-600 ring-2 ring-purple-100 hover:shadow-md hover:-translate-y-0.5 rounded-xl bg-white text-purple-800 m-6 p-6">
-        {/* Left: Account Info */}
-        <div className="flex flex-col gap-3">
-          <h2 className="text-xl font-semibold text-purple-800 tracking-tight">
-            {account?.data.name}
-          </h2>
-          <p className="text-sm text-gray-500">{account?.data.officialName}</p>
-          <p className="text-base font-semibold tracking-[1.1px] text-gray-700">
-            ●●●● ●●●● ●●●● {account?.data.mask}
-          </p>
-        </div>
-
-        {/* Right: Account Balance */}
-        <div className="flex flex-col items-start md:items-end mx-auto md:mx-0 gap-2 text-purple-700 bg-purple-100 rounded-xl p-6">
-          <p className="text-sm uppercase tracking-wide text-gray-500">
-            Current Balance
-          </p>
-          <div className="flex items-end gap-2 text-3xl font-bold text-gray-900 leading-none">
-            <span>{formatAmount(account?.data.currentBalance)}</span>
-            <span className="text-base font-medium text-gray-500 mb-[2px]">
-              USD
-            </span>
+      <div className="max-w-[1450px] mx-auto">
+        <section className="flex flex-col md:flex-row justify-between items-start gap-6 rounded-[20px] bg-white text-gray-800 border border-purple-600 ring-2 ring-purple-100 hover:shadow-md hover:-translate-y-0.5 rounded-xl bg-white text-purple-800 m-6 p-6">
+          <div className="flex flex-col gap-3">
+            <h2 className="text-xl font-semibold text-purple-800 tracking-tight">
+              {account?.data.name}
+            </h2>
+            <p className="text-sm text-gray-500">
+              {account?.data.officialName}
+            </p>
+            <p className="text-base font-semibold tracking-[1.1px] text-gray-700">
+              ●●●● ●●●● ●●●● {account?.data.mask}
+            </p>
           </div>
-        </div>
-      </section>
 
-      {/* Transactions + Pagination */}
-      <section className="flex w-full flex-col gap-6 p-6">
-        <TransactionsTable transactions={currentTransactions} />
-
-        {totalPages > 1 && (
-          <div className="my-4 w-full">
-            <Pagination totalPages={totalPages} page={currentPage} />
+          <div className="flex flex-col items-start md:items-end mx-auto md:mx-0 gap-2 text-purple-700 bg-purple-100 rounded-xl p-6">
+            <p className="text-sm uppercase tracking-wide text-gray-500">
+              Current Balance
+            </p>
+            <div className="flex items-end gap-2 text-3xl font-bold text-gray-900 leading-none">
+              <span>{formatAmount(account?.data.currentBalance)}</span>
+              <span className="text-base font-medium text-gray-500 mb-[2px]">
+                USD
+              </span>
+            </div>
           </div>
-        )}
-      </section>
+        </section>
+
+        <section className="flex w-full flex-col gap-6 p-6">
+          <TransactionsTable transactions={currentTransactions} />
+
+          {totalPages > 1 && (
+            <div className="my-4 w-full">
+              <Pagination totalPages={totalPages} page={currentPage} />
+            </div>
+          )}
+        </section>
+      </div>
     </div>
   );
 };

@@ -9,7 +9,7 @@ const TotalBalanceBox = ({
   <section className="flex flex-col md:flex-row gap-6 rounded-[20px] bg-white p-6 shadow-lg">
     <DoughnutChart accounts={accounts} />
 
-    <div className="flex flex-col gap-4 text-gray-800">
+    <div className="flex flex-col gap-4 text-gray-800 my-auto">
       <h2 className="text-lg font-semibold text-purple-800 tracking-tight">
         Bank Accounts:
         <span className="ml-2 text-gray-900 text-0lg font-bold">
