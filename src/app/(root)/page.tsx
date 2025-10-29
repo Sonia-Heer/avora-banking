@@ -1,6 +1,4 @@
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 
 import HeaderBox from "@/components/HeaderBox";
 import TotalBalanceBox from "@/components/TotalBalanceBox";
@@ -13,7 +11,12 @@ import { getAccount, getAccounts } from "@/lib/actions/bank.actions";
 import { countTransactionCategories } from "@/lib/utils";
 import TransactionChart from "@/components/TransactionsChart";
 
-const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
+const Home = async (props: {
+  searchParams?: { [key: string]: string | string[] };
+}) => {
+  const searchParams = await props.searchParams;
+  const id = searchParams?.id;
+  const page = searchParams?.page;
   const currentPage = Number(page as string) || 1;
 
   const loggedIn = await getLoggedInUser();

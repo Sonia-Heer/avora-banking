@@ -28,9 +28,9 @@ const BankCard = ({
               <h1 className="text-[12px] font-semibold text-white uppercase">
                 {userName}
               </h1>
-              <h2 className="text-12 font-semibold text-white">●● / ●●</h2>
+              <h2 className="text-[12px] font-semibold text-white">●● / ●●</h2>
             </div>
-            <p className="text-14 font-semibold tracking-[1.1px] text-white">
+            <p className="text-[14px] font-semibold tracking-[1.1px] text-white">
               ●●●● ●●●● ●●●● <span className="text-16">{account?.mask}</span>
             </p>
           </article>

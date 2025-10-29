@@ -107,7 +107,8 @@ const TransactionChart = ({ transactions }: Props) => {
         ticks: {
           color: "#555",
 
-          callback: (value: any) => `$${Number(value).toLocaleString()}`,
+          callback: (value: number | string) =>
+            `$${Number(value).toLocaleString()}`,
         },
         grid: { color: "rgba(0,0,0,0.05)" },
       },

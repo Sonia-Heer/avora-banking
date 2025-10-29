@@ -17,7 +17,7 @@ import ProgressBar from "./ProgressBar";
 
 const AuthForm = ({ type }: { type: string }) => {
   const router = useRouter();
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [validating, setValidating] = useState(false);
@@ -88,9 +88,14 @@ const AuthForm = ({ type }: { type: string }) => {
   const handleNext = async () => {
     setValidating(true);
     const fieldsToValidate = stepFields[step];
-    const isValid = await form.trigger(fieldsToValidate as any, {
-      shouldFocus: true,
-    });
+
+    const isValid = await form.trigger(
+      fieldsToValidate as unknown as (keyof z.infer<typeof formSchema>)[],
+      {
+        shouldFocus: true,
+      }
+    );
+
     setValidating(false);
 
     if (isValid) goToStep((step + 1) as 1 | 2 | 3);

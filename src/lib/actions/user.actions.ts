@@ -120,7 +120,7 @@ export async function getLoggedInUser() {
 
     return parseStringify(user);
   } catch (error) {
-    return null;
+    return error;
   }
 }
 
