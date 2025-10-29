@@ -38,7 +38,6 @@ const BankInfo = ({ account, appwriteItemId, type }: BankInfoProps) => {
         type === "card" && "max-w-sm"
       )}
     >
-      {/* Bank Icon */}
       <figure
         className={cn(
           "flex justify-center items-center h-12 w-12 rounded-full bg-brand-secondary flex-shrink-0",
@@ -54,7 +53,6 @@ const BankInfo = ({ account, appwriteItemId, type }: BankInfoProps) => {
         />
       </figure>
 
-      {/* Bank Info */}
       <div className="flex w-full flex-col justify-center">
         <div className="flex items-center justify-between">
           <h2

@@ -12,11 +12,10 @@ import { countTransactionCategories } from "@/lib/utils";
 import TransactionChart from "@/components/TransactionsChart";
 
 const Home = async ({ params, searchParams }: SearchParamProps) => {
-  const { id } = await params;
   const sp = searchParams ? await searchParams : {};
   const page = Array.isArray(sp.page) ? sp.page[0] : sp.page;
   const currentPage = Number(page as string) || 1;
-
+  const id = sp.id;
   const loggedIn = await getLoggedInUser();
   const accounts = await getAccounts({ userId: loggedIn.$id });
   if (!accounts) return null;

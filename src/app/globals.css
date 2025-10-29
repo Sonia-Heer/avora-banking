@@ -39,7 +39,7 @@
 
 @layer utilities {
   .root-layout {
-    @apply fixed p-8 lg:hidden flex justify-end;
+    @apply fixed p-4 lg:hidden flex justify-end;
   }
 
   .container {
@@ -48,7 +48,7 @@
 
   /* NAVIGATION */
   .top-menu {
-    @apply fixed inset-x-0 top-0 z-50 bg-foreground text-primary-text lg:border-b border-gray-700 py-6;
+    @apply fixed inset-x-0 top-0 z-50 bg-foreground text-primary-text lg:border-b border-gray-700 md:py-6;
   }
 
   .badge {
