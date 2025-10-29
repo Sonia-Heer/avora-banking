@@ -1,5 +1,6 @@
 declare type SearchParamProps = {
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] }>;
 };
 
 declare type SignUpParams = {
@@ -243,6 +244,7 @@ declare interface PaymentTransferFormProps {
   accounts: Account[];
 }
 
+// Actions
 declare interface getAccountsProps {
   userId: string;
 }
