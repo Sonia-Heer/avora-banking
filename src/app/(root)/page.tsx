@@ -28,7 +28,6 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
   const categories: CategoryCount[] = countTransactionCategories(transactions);
   const banks = accountsData.slice(0, 2);
 
-  console.log(account);
   return (
     <section className="h-screen">
       <HeaderBox

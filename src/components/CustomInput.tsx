@@ -25,7 +25,9 @@ const CustomInput = ({ control, name, label, placeholder }: CustomInput) => {
       name={name}
       render={({ field }) => (
         <FormItem className="gap-2">
-          <FormLabel className="justify-center pt-2">{label}</FormLabel>
+          <FormLabel className="justify-center pt-2 text-tertiary-text">
+            {label}
+          </FormLabel>
           <FormControl className="rounded-[30px] p-[30px]">
             <Input
               placeholder={placeholder}

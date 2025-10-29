@@ -79,7 +79,6 @@ const AuthForm = ({ type }: { type: string }) => {
     }
   };
 
-  // Fields to validate per step
   const stepFields = {
     1: ["firstName", "lastName", "dateOfBirth"],
     2: ["address1", "city", "state", "postalCode", "ssn"],
@@ -121,12 +120,15 @@ const AuthForm = ({ type }: { type: string }) => {
       ) : (
         <>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-8 w-full"
+            >
               {type === "sign-up" && (
                 <>
                   <div className="h-[350px]">
                     {step === 1 && (
-                      <>
+                      <div className="flex flex-col gap-4">
                         <CustomInput
                           control={form.control}
                           name="firstName"
@@ -145,11 +147,11 @@ const AuthForm = ({ type }: { type: string }) => {
                           label="Date of Birth"
                           placeholder="YYYY-MM-DD"
                         />
-                      </>
+                      </div>
                     )}
 
                     {step === 2 && (
-                      <>
+                      <div className="flex flex-col gap-4">
                         <CustomInput
                           control={form.control}
                           name="address1"
@@ -184,11 +186,11 @@ const AuthForm = ({ type }: { type: string }) => {
                             placeholder="Example: 1234"
                           />
                         </div>
-                      </>
+                      </div>
                     )}
 
                     {step === 3 && (
-                      <>
+                      <div className="flex flex-col gap-4">
                         <CustomInput
                           control={form.control}
                           name="email"
@@ -217,7 +219,7 @@ const AuthForm = ({ type }: { type: string }) => {
                             )}
                           </Button>
                         </div>
-                      </>
+                      </div>
                     )}
                   </div>
 
@@ -289,7 +291,7 @@ const AuthForm = ({ type }: { type: string }) => {
             </form>
           </Form>
 
-          <footer className="absolute top-0 right-0 flex items-center gap-1 p-8">
+          <footer className="absolute top-0 right-0 flex items-center gap-1 p-8 text-tertiary-text">
             <p>
               {type === "sign-in"
                 ? "Don't have an account?"
