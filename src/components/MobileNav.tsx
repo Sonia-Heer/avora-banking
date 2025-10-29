@@ -4,8 +4,6 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
@@ -21,7 +19,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
   const pathname = usePathname();
 
   return (
-    <section className="w-full max-w-[264px] ">
+    <section>
       <Sheet>
         <SheetTrigger>
           <Image
@@ -41,7 +39,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
               href="/"
               className="cursor-pointer flex items-center gap-1 px-4"
             >
-              <h1 className="text-[26px] font-ibm-plex-serif font-bold text-black-1">
+              <h1 className="text-[26px] font-bold text-black">
                 Avora Banking
               </h1>
             </Link>
@@ -60,7 +58,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
                         href={item.route}
                         key={item.label}
                         className={cn("mobilenav-sheet_close w-full", {
-                          "bg-purple-25 ": isActive,
+                          "bg-foreground": isActive,
                         })}
                       >
                         <Image
@@ -68,15 +66,18 @@ const MobileNav = ({ user }: MobileNavProps) => {
                           alt={item.label}
                           width={20}
                           height={20}
-                          className={cn("text-purple-800", {
+                          className={cn("text-foreground", {
                             "brightness-[3] invert-0": isActive,
                           })}
                         />
 
                         <p
-                          className={cn("text-16 font-semibold text-black-2", {
-                            "text-purple-800": isActive,
-                          })}
+                          className={cn(
+                            "text-16 font-semibold text-tertiary-text",
+                            {
+                              "text-primary-text": isActive,
+                            }
+                          )}
                         >
                           {item.label}
                         </p>

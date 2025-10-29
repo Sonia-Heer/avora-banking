@@ -24,15 +24,14 @@ const RecentTransactions = ({
   return (
     <section>
       <header className="flex items-center justify-between mb-6">
-        <h2 className="text-lg font-semibold text-gray-900">Payment History</h2>
+        <h2 className="text-lg font-semibold text-gray-700">Payment History</h2>
         <Link
           href={`/transaction-history/?id=${appwriteItemId}`}
-          className="text-sm font-medium text-purple-700 hover:text-purple-900 transition-colors"
+          className="text-sm font-medium text-brand-primary hover:text-brand-secondary transition-colors"
         >
           View all →
         </Link>
       </header>
-      {/* <div className="w-[80%] h-[2px] bg-purple-200 rounded-full my-6 mx-auto" /> */}
 
       <Tabs defaultValue={appwriteItemId}>
         <TabsList className="flex flex-wrap gap-2 mb-6 bg-transparent mx-auto">
@@ -47,7 +46,6 @@ const RecentTransactions = ({
           ))}
         </TabsList>
 
-        {/* Tab Panels */}
         {accounts.map((account: Account) => (
           <TabsContent
             key={account.id}
@@ -73,7 +71,7 @@ const RecentTransactions = ({
             />
 
             {totalPages > 1 && (
-              <div className="pt-4 border-t border-gray-200">
+              <div className="pt-4 border-t border-foreground">
                 <Pagination totalPages={totalPages} page={page} />
               </div>
             )}

@@ -3,104 +3,18 @@
 @plugin "tailwindcss-animate";
 
 @theme {
-  /* Base Colors */
-  --color-background: #ffffff;
-  --color-foreground: oklch(0.15 0 0);
-  --color-muted: oklch(0.96 0 0);
-  --color-muted-foreground: oklch(0.45 0 0);
-  --color-border: oklch(0.9 0 0);
-  --color-ring: oklch(0.7 0.15 250);
+  --color-background: #f6f6f6;
+  --color-foreground: #141820;
+  --color-muted: #f6f6f6;
+  --color-muted-foreground: #e4e5e8;
+  --color-border: #f6f6f6;
+  --color-ring: #296e85;
 
-  /* Custom Brand Colors */
-  --color-primary: #51087e;
-  --color-primary-foreground: oklch(0.98 0 0);
-  --color-secondary: oklch(0.65 0.15 180);
-  --color-accent: oklch(0.72 0.11 178);
-  --color-destructive: oklch(0.55 0.22 25);
-
-  /* Bank/Brand Colors */
-  --color-bank-gradient: #0179fe;
-  --color-brand-orange: #ff6b35;
-
-  /* Fill Colors */
-  --color-fill-1: rgba(255, 255, 255, 0.1);
-
-  /* Black */
-  --color-black-1: #00214f;
-  --color-black-2: #344054;
-  --color-black-900: #000000;
-
-  --color-white-1: #ffffff;
-
-  /* Gray */
-  --color-gray-25: #fcfcfd;
-  --color-gray-200: #eaecf0;
-  --color-gray-300: #d0d5dd;
-  --color-gray-500: #667085;
-  --color-gray-600: #475467;
-  --color-gray-700: #344054;
-  --color-gray-900: #101828;
-
-  /* Pink */
-  --color-pink-25: #fdf2f8;
-  --color-pink-200: #fbcfe8;
-  --color-pink-300: #f9a8d4;
-  --color-pink-500: #ec4899;
-  --color-pink-600: #db2777;
-  --color-pink-700: #be185d;
-  --color-pink-900: #831843;
-
-  /* Purple */
-  --color-purple-25: #cec2eb;
-  --color-purple-200: #c576f6;
-  --color-purple-300: #d8b4fe;
-  --color-purple-500: #a855f7;
-  --color-purple-600: #880ed4;
-  --color-purple-700: #6c0ba9;
-  --color-purple-900: #51087e;
-
-  /* Orange */
-  --color-orange-25: #fff7ed;
-  --color-orange-200: #fed7aa;
-  --color-orange-300: #fdba74;
-  --color-orange-500: #f97316;
-  --color-orange-600: #ea580c;
-  --color-orange-700: #c2410c;
-  --color-orange-900: #7c2d12;
-
-  /* Background Images / Gradients */
-  --background-image-bank-gradient: linear-gradient(
-    90deg,
-    #0179fe 0%,
-    #4893ff 100%
-  );
-  --background-image-bank-green-gradient: linear-gradient(
-    90deg,
-    #01797a 0%,
-    #489399 100%
-  );
-  --background-image-gradient-mesh: url("/icons/gradient-mesh.svg");
-
-  /* Box Shadows */
-  --shadow-form: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
-  --shadow-chart: 0px 1px 3px 0px rgba(16, 24, 40, 0.1),
-    0px 1px 2px 0px rgba(16, 24, 40, 0.06);
-  --shadow-profile: 0px 12px 16px -4px rgba(16, 24, 40, 0.08),
-    0px 4px 6px -2px rgba(16, 24, 40, 0.03);
-  --shadow-credit-card: 8px 10px 16px 0px rgba(0, 0, 0, 0.05);
-
-  /* Fonts */
-  --font-inter: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-ibm-plex-serif: var(--font-ibm-plex-serif), ui-serif, Georgia, serif;
-
-  /* Container */
-  --container-center: true;
-  --container-padding: 2rem;
-  --breakpoint-2xl: 1400px;
-
-  /* Animations */
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --color-brand-primary: #296e85;
+  --color-brand-secondary: #add8e6;
+  --color-primary-text: #f6f6f6;
+  --color-secondary-text: #999da0;
+  --color-tertiary-text: #141820;
 }
 
 @layer base {
@@ -109,75 +23,37 @@
   }
 
   body {
-    @apply font-inter antialiased;
+    @apply antialiased font-medium text-[14px] md:text-[15.8px] text-secondary-text;
+    font-family: var(--font-plus-jakarta-sans), sans-serif;
   }
 
-  /* Accordion Animations */
-  @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
+  h1 {
+    @apply capitalize text-[clamp(2rem,5vw,3.6rem)] font-light text-primary-text;
   }
 
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
+  h2 {
+    @apply capitalize text-[22px];
   }
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
 }
 
 @layer utilities {
-  /* Root Layout */
   .root-layout {
-    @apply flex h-[70px] items-center justify-between p-5  sm:p-8 md:hidden;
+    @apply fixed p-8 lg:hidden flex justify-end;
   }
 
-  .auth-asset {
-    @apply flex items-center bg-[url(/placeholder.jpg)] bg-cover bg-center;
+  .container {
+    @apply max-w-[1650px] mx-auto px-6 md:px-20;
   }
 
-  .header-box {
-    @apply flex flex-col leading-5;
+  /* NAVIGATION */
+  .top-menu {
+    @apply fixed inset-x-0 top-0 z-50 bg-foreground text-primary-text lg:border-b border-gray-700 py-6;
   }
 
-  .header-box-title {
-    @apply font-semibold text-muted-foreground leading-8;
+  .badge {
+    @apply flex items-center justify-center h-8 w-8 rounded-full bg-brand-secondary text-tertiary-text text-xl font-bold;
   }
 
-  /* Total Balance */
-
-  .total-balance-label {
-    @apply text-[14px] font-medium text-gray-600;
-  }
-
-  .total-balance-amount {
-    @apply text-[24px] lg:text-[30px] flex-1 font-semibold text-gray-900;
-  }
-
-  .sidebar-logo {
-    @apply 2xl:text-[22px] font-ibm-plex-serif text-[22px] font-bold text-black-1 max-xl:hidden;
-  }
-
-  .sidebar-link {
-    @apply flex gap-3 items-center py-1 md:p-3 2xl:p-4 rounded-lg justify-center xl:justify-start;
-  }
-
-  .sidebar-label {
-    @apply text-[14px] font-semibold text-black-2 max-xl:hidden;
-  }
-
-  /* Mobile nav */
   .mobilenav-sheet {
     @apply flex h-[calc(100vh-72px)] flex-col justify-between overflow-y-auto;
   }
@@ -186,27 +62,44 @@
     @apply flex gap-3 items-center p-4 rounded-lg w-full max-w-60;
   }
 
-  /* Right sidebar */
-  .right-sidebar {
-    @apply hidden xl:flex h-screen max-h-screen flex-col border-l border-gray-200 xl:overflow-y-scroll w-[355px];
+  /* HEADER BOX */
+  .header-box {
+    @apply flex flex-col justify-end bg-foreground text-white h-[25%] min-h-[450px];
   }
 
-  /* Bank Card */
+  .data-container {
+    @apply rounded-lg bg-white p-6 border border-gray-200 shadow-sm;
+  }
+
+  /* BANK CARD */
+
+  .bank-card {
+    @apply relative flex h-[190px] w-full max-w-[320px] justify-between rounded-[20px] backdrop-blur-[10px] shadow-2xl;
+  }
 
   .bank-card_content {
-    @apply relative z-10 flex size-full max-w-[228px] flex-col justify-between rounded-l-[20px] bg-black-900 px-5 pb-4 pt-5;
+    @apply relative z-10 flex size-full max-w-[228px] flex-col justify-between rounded-l-[20px] bg-foreground px-5 pb-4 pt-5;
   }
 
   .bank-card_icon {
-    @apply flex size-full flex-1 flex-col items-end justify-between rounded-r-[20px] bg-purple-25 bg-cover bg-center bg-no-repeat py-5 pr-5;
+    @apply flex size-full flex-1 flex-col items-end justify-between rounded-r-[20px] bg-foreground bg-cover bg-center bg-no-repeat py-5 pr-5;
   }
-  /* Auth Form */
+
+  /* RING BORDER */
+  .ring {
+    @apply flex flex-col md:flex-row justify-between items-start gap-6 rounded-[20px] bg-white text-tertiary-text border border-brand-primary ring-2 ring-brand-secondary hover:shadow-md hover:-translate-y-0.5 rounded-xl bg-white text-tertiary-text p-6 my-6 md:my-10;
+  }
+
+  .auth-asset {
+    @apply flex items-center bg-[url(/placeholder.jpg)] bg-cover bg-center;
+  }
+
   .auth-form {
     @apply flex min-h-screen w-full max-w-[420px] flex-col justify-center gap-5 py-10 md:gap-8;
   }
 
   input.form-input {
-    @apply bg-pink-900;
+    @apply bg-foreground;
   }
 
   .form-item {
@@ -214,7 +107,7 @@
   }
 
   .form-label {
-    @apply text-[14px] w-full max-w-[280px] font-medium text-gray-700;
+    @apply text-[14px] w-full max-w-[280px] font-medium text-foreground;
   }
 
   .form-message {
@@ -229,13 +122,8 @@
     @apply text-[14px] cursor-pointer font-medium text-green-900;
   }
 
-  /* Footer */
   .footer {
     @apply flex cursor-pointer items-center justify-between gap-4 py-6;
-  }
-
-  .footer_name {
-    @apply flex items-center justify-center rounded-full bg-gray-200 max-xl:hidden;
   }
 
   .footer_email {
@@ -243,69 +131,14 @@
   }
 
   .footer_name-mobile {
-    @apply flex size-[10px] items-center justify-center rounded-full bg-gray-200;
-  }
-
-  .footer_email-mobile {
-    @apply flex flex-1 flex-col justify-center;
+    @apply flex size-[40px] items-center justify-center rounded-full bg-foreground;
   }
 
   .footer_image {
-    @apply relative size-[20px] max-xl:w-full max-xl:flex max-xl:justify-center max-xl:items-center;
-  }
-
-  .recent-transactions {
-    @apply flex w-full flex-col gap-6;
-  }
-
-  /* .view-all-btn {
-    @apply text-14 rounded-lg border border-gray-300 px-4 py-2 font-semibold text-gray-700;
-  } */
-
-  .recent-transactions {
-    @apply flex w-full flex-col gap-6;
+    @apply relative size-[20px] max-xl:w-full max-xl:flex max-xl:justify-center max-xl:items-center cursor-pointer;
   }
 
   .banktab-item {
     @apply gap-[18px] border-b-2 flex px-2 sm:px-4 py-2 transition-all;
-  }
-
-  /* Custom Shadow Utilities */
-  .shadow-form {
-    box-shadow: var(--shadow-form);
-  }
-
-  .shadow-chart {
-    box-shadow: var(--shadow-chart);
-  }
-
-  .shadow-profile {
-    box-shadow: var(--shadow-profile);
-  }
-
-  .shadow-credit-card {
-    box-shadow: var(--shadow-credit-card);
-  }
-
-  /* Custom Background Gradients */
-  .bg-bank-gradient {
-    background-image: var(--background-image-bank-gradient);
-  }
-
-  .bg-bank-green-gradient {
-    background-image: var(--background-image-bank-green-gradient);
-  }
-
-  .bg-gradient-mesh {
-    background-image: var(--background-image-gradient-mesh);
-  }
-
-  /* Animation Utilities */
-  .animate-accordion-down {
-    animation: accordion-down 0.2s ease-out;
-  }
-
-  .animate-accordion-up {
-    animation: accordion-up 0.2s ease-out;
   }
 }

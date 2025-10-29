@@ -16,7 +16,7 @@ const DoughnutChart = ({ accounts }: DoughnutChartProps) => {
       {
         label: "Bank Balances",
         data: balances,
-        backgroundColor: ["#7C3AED", "#9F7AEA", "#C4B5FD"],
+        backgroundColor: ["#add8e6", "#141820", "#296e85"],
         borderColor: "#fff",
         borderWidth: 3,
         hoverOffset: 10,
@@ -31,7 +31,7 @@ const DoughnutChart = ({ accounts }: DoughnutChartProps) => {
         display: true,
         position: "bottom" as const,
         labels: {
-          color: "#6B7280",
+          color: "#141820",
           font: {
             size: 15,
             family: "Inter, sans-serif",

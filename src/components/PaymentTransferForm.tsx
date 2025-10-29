@@ -9,7 +9,7 @@ import * as z from "zod";
 
 import { createTransfer } from "@/lib/actions/dwolla.actions";
 import { getBank, getBankByAccountId } from "@/lib/actions/user.actions";
-import { decryptId, formatAmount } from "@/lib/utils";
+import { decryptId } from "@/lib/utils";
 import { createTransaction } from "@/lib/actions/transaction.actions";
 
 import { Button } from "./ui/button";
@@ -90,19 +90,16 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
   };
 
   return (
-    <section className="flex flex-col bg-white text-gray-800">
-      <h2 className="text-2xl font-bold text-purple-800 mb-2">
+    <section className="flex flex-col text-foreground">
+      <h2 className="text-2xl font-bold text-foreground mb-2">
         Transfer Funds
       </h2>
-      <p className="text-sm text-gray-500 mb-6">
+      <p className="text-sm text-foreground mb-6">
         Send money between your connected bank accounts or to another user.
       </p>
 
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(submit)}
-          className="flex flex-col divide-y divide-gray-100"
-        >
+        <form onSubmit={form.handleSubmit(submit)} className="flex flex-col">
           {/* Select Source Bank */}
           <FormField
             control={form.control}
@@ -110,10 +107,10 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
             render={() => (
               <FormItem className="py-6">
                 <div className="flex flex-col gap-2">
-                  <FormLabel className="text-sm font-semibold text-gray-700">
+                  <FormLabel className="text-sm font-semibold text-foreground">
                     Select Source Bank
                   </FormLabel>
-                  <FormDescription className="text-xs text-gray-500">
+                  <FormDescription className="text-xs text-foreground">
                     Choose the account you want to send funds from
                   </FormDescription>
                   <FormControl>
@@ -136,16 +133,16 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
             render={({ field }) => (
               <FormItem className="py-6">
                 <div className="flex flex-col gap-2">
-                  <FormLabel className="text-sm font-semibold text-gray-700">
+                  <FormLabel className="text-sm font-semibold text-foreground">
                     Transfer Note
                   </FormLabel>
-                  <FormDescription className="text-xs text-gray-500">
+                  <FormDescription className="text-xs text-foreground">
                     Add a short message or reference for this transfer
                   </FormDescription>
                   <FormControl>
                     <Textarea
                       placeholder="Write a short note here..."
-                      className="rounded-lg border-gray-300 focus:ring-2 focus:ring-purple-300"
+                      className="rounded-lg border-gray-400 focus:ring-2 focus:ring-foreground"
                       {...field}
                     />
                   </FormControl>
@@ -157,10 +154,10 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
 
           {/* Recipient Details */}
           <div className="pt-8 pb-4">
-            <h3 className="text-lg font-semibold text-gray-900">
+            <h3 className="text-lg font-semibold text-foreground">
               Recipient Details
             </h3>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-foreground">
               Enter recipient’s account information
             </p>
           </div>
@@ -171,13 +168,13 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
             name="email"
             render={({ field }) => (
               <FormItem className="py-6">
-                <FormLabel className="text-sm font-semibold text-gray-700">
+                <FormLabel className="text-sm font-semibold text-foreground">
                   Recipient&apos;s Email
                 </FormLabel>
                 <FormControl>
                   <Input
                     placeholder="e.g. johndoe@gmail.com"
-                    className="rounded-lg border-gray-300 focus:ring-2 focus:ring-purple-300"
+                    className="rounded-lg border-gray-400 focus:ring-2 focus:ring-foreground"
                     {...field}
                   />
                 </FormControl>
@@ -192,13 +189,13 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
             name="sharableId"
             render={({ field }) => (
               <FormItem className="py-6">
-                <FormLabel className="text-sm font-semibold text-gray-700">
+                <FormLabel className="text-sm font-semibold text-foreground">
                   Receiver&apos;s Plaid Sharable ID
                 </FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Enter the recipient's sharable ID"
-                    className="rounded-lg border-gray-300 focus:ring-2 focus:ring-purple-300"
+                    className="rounded-lg border-gray-400 focus:ring-2 focus:ring-foreground"
                     {...field}
                   />
                 </FormControl>
@@ -213,13 +210,13 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
             name="amount"
             render={({ field }) => (
               <FormItem className="py-6">
-                <FormLabel className="text-sm font-semibold text-gray-700">
+                <FormLabel className="text-sm font-semibold text-foreground">
                   Amount
                 </FormLabel>
                 <FormControl>
                   <Input
                     placeholder="e.g. 250.00"
-                    className="rounded-lg border-gray-300 focus:ring-2 focus:ring-purple-300"
+                    className="rounded-lg border-gray-400 focus:ring-2 focus:ring-foreground"
                     {...field}
                   />
                 </FormControl>
@@ -233,7 +230,7 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
             <Button
               type="submit"
               disabled={isLoading}
-              className="bg-purple-700 hover:bg-purple-800 text-white px-6 py-2 rounded-xl flex items-center gap-2 transition-all hover:shadow-md"
+              className="bg-brand-primary hover:bg-brand-secondary hover:text-tertiary-text text-white px-6 py-2 rounded-xl flex items-center gap-2 transition-all hover:shadow-md"
             >
               {isLoading ? (
                 <>

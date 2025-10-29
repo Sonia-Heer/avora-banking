@@ -101,10 +101,10 @@ const AuthForm = ({ type }: { type: string }) => {
     <section className="auth-form">
       <header className="flex flex-col gap-5 md:gap-8">
         <div className="flex flex-col text-center justify-center gap-1 md:gap-3">
-          <h1 className="text-[24px] lg:text-[36px] font-semibold text-gray-900">
+          <h1 className="text-[24px] lg:text-[36px] font-semibold text-foreground">
             {user ? "Link Account" : type === "sign-in" ? "Sign In" : "Sign Up"}
           </h1>
-          <p className="text-gray-600 text-[16px] font-normal">
+          <p className="text-foreground text-[16px] font-normal">
             {user
               ? "Link your account to get started"
               : "Please enter your details below"}

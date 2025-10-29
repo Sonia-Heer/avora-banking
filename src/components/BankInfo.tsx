@@ -33,15 +33,15 @@ const BankInfo = ({ account, appwriteItemId, type }: BankInfoProps) => {
         "flex items-center gap-4 p-4 transition-all duration-200",
         "bg-white rounded-xl border cursor-pointer hover:shadow-md hover:-translate-y-0.5",
         isActive
-          ? "border-purple-600 ring-2 ring-purple-100"
-          : "border-gray-200",
+          ? "border-brand-primary ring-2 ring-brand-secondary"
+          : "border-foreground",
         type === "card" && "max-w-sm"
       )}
     >
       {/* Bank Icon */}
       <figure
         className={cn(
-          "flex justify-center items-center h-12 w-12 rounded-full bg-purple-50 flex-shrink-0",
+          "flex justify-center items-center h-12 w-12 rounded-full bg-brand-secondary flex-shrink-0",
           colors.lightBg
         )}
       >
@@ -59,7 +59,7 @@ const BankInfo = ({ account, appwriteItemId, type }: BankInfoProps) => {
         <div className="flex items-center justify-between">
           <h2
             className={cn(
-              "font-semibold text-gray-900 truncate text-base",
+              "font-semibold text-foreground truncate text-base",
               colors.title
             )}
           >
@@ -70,7 +70,7 @@ const BankInfo = ({ account, appwriteItemId, type }: BankInfoProps) => {
             <span
               className={cn(
                 "ml-2 rounded-full px-3 py-1 text-xs font-medium",
-                "bg-purple-100 text-purple-800",
+                "bg-brand-secondary text-primary-text",
                 colors.subText,
                 colors.lightBg
               )}
@@ -82,7 +82,7 @@ const BankInfo = ({ account, appwriteItemId, type }: BankInfoProps) => {
 
         <p
           className={cn(
-            "mt-1 text-sm font-medium text-gray-700",
+            "mt-1 text-sm font-medium text-foreground",
             colors.subText
           )}
         >

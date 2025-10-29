@@ -30,7 +30,9 @@ const CategoryBadge = ({ category }: CategoryBadgeProps) => {
       )}
     >
       <div className={cn("size-2 rounded-full", backgroundColor)} />
-      <p className={cn("text-[12px] font-medium", textColor)}>{category}</p>
+      <p className={cn("text-[12px] font-medium capitalize", textColor)}>
+        {removeSpecialCharacters(category)}
+      </p>
     </div>
   );
 };
@@ -60,7 +62,7 @@ const TransactionsTable = ({
 }: TransactionTableProps) => {
   return (
     <Table>
-      <TableHeader className="bg-[#f6f6f6]">
+      <TableHeader className="bg-muted-foreground">
         <TableRow>
           {visibleColumns.transaction && (
             <TableHead className="px-2">Transaction</TableHead>
@@ -95,11 +97,11 @@ const TransactionsTable = ({
             <TableRow key={t.id}>
               {visibleColumns.transaction && (
                 <TableCell className="max-w-[250px] pl-2 pr-10">
-                  <div className="flex flex-col gap-3 leading-3">
-                    <h1 className="text-14 truncate font-semibold text-[#344054] capitalize">
+                  <div className="flex flex-col gap-3 leading-4">
+                    <h2 className="text-[15.8px] truncate font-semibold text-[#344054] capitalize">
                       {removeSpecialCharacters(t.name)}
-                    </h1>
-                    <h2 className="text-gray-500 capitalize">
+                    </h2>
+                    <h2 className="text-secondary-text text-[13.5px] capitalize">
                       {removeSpecialCharacters(t.category)}
                     </h2>
                   </div>
@@ -113,13 +115,13 @@ const TransactionsTable = ({
               )}
 
               {visibleColumns.date && (
-                <TableCell className="min-w-32 pl-2 pr-10 text-black-900 max-md:hidden">
+                <TableCell className="min-w-32 pl-2 pr-10 text-foreground max-md:hidden">
                   {formatDateTime(new Date(t.date)).dateTime}
                 </TableCell>
               )}
 
               {visibleColumns.channel && (
-                <TableCell className="pl-2 pr-10 capitalize min-w-24 text-black-900 max-md:hidden">
+                <TableCell className="pl-2 pr-10 capitalize min-w-24 text-foreground max-md:hidden">
                   {t.paymentChannel}
                 </TableCell>
               )}
@@ -134,7 +136,7 @@ const TransactionsTable = ({
                 <TableCell
                   className={`pl-2 pr-10 font-semibold ${
                     isDebit || amount[0] === "-"
-                      ? "text-gray-900"
+                      ? "text-foreground"
                       : "text-[#039855]"
                   }`}
                 >

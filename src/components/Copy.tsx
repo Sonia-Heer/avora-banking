@@ -22,7 +22,7 @@ const Copy = ({ title }: { title: string }) => {
       variant="secondary"
       onClick={copyToClipboard}
     >
-      <p className="line-clamp-1 w-full max-w-full text-xs font-medium text-purple-800">
+      <p className="line-clamp-1 w-full max-w-full text-xs font-medium text-foreground">
         {title}
       </p>
 

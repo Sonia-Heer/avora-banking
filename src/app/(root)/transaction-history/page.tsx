@@ -33,32 +33,32 @@ const TransactionHistory = async ({
     indexOfLastTransaction
   );
   return (
-    <div className="h-screen max-xl:max-h-screen text-white">
+    <div>
       <HeaderBox
         title="Transaction History"
         subtext="See your bank details and transactions."
       />
-      <div className="max-w-[1650px] mx-auto px-6 md:px-20">
-        <section className="flex flex-col md:flex-row justify-between items-start gap-6 rounded-[20px] bg-white text-gray-800 border border-purple-600 ring-2 ring-purple-100 hover:shadow-md hover:-translate-y-0.5 rounded-xl bg-white text-purple-800 p-6 my-6 md:my-10">
+      <div className="container">
+        <section className="ring">
           <div className="flex flex-col gap-3">
-            <h2 className="text-xl font-semibold text-purple-800 tracking-tight">
+            <h2 className="text-xl font-semibold text-tertiary-text tracking-tight">
               {account?.data.name}
             </h2>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-tertiary-text">
               {account?.data.officialName}
             </p>
-            <p className="text-base font-semibold tracking-[1.1px] text-gray-700">
+            <p className="text-base font-semibold tracking-[1.1px] text-tertiary-text">
               ●●●● ●●●● ●●●● {account?.data.mask}
             </p>
           </div>
 
-          <div className="flex flex-col items-start md:items-end mx-auto md:mx-0 gap-2 text-purple-700 bg-purple-100 rounded-xl p-6">
-            <p className="text-sm uppercase tracking-wide text-gray-500">
+          <div className="flex flex-col items-start md:items-end mx-auto md:mx-0 gap-2 text-tertiary-text bg-brand-secondary rounded-xl p-6">
+            <p className="text-sm uppercase tracking-wide text-tertiary-text">
               Current Balance
             </p>
-            <div className="flex items-end gap-2 text-3xl font-bold text-gray-900 leading-none">
+            <div className="flex items-end gap-2 text-3xl font-bold text-tertiary-text leading-none">
               <span>{formatAmount(account?.data.currentBalance)}</span>
-              <span className="text-base font-medium text-gray-500 mb-[2px]">
+              <span className="text-base font-medium text-tertiary-text mb-[2px]">
                 USD
               </span>
             </div>

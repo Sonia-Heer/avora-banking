@@ -11,10 +11,10 @@ const ProgressBar = ({ step, totalSteps = 3 }: ProgressBarProps) => {
   return (
     <div className="relative flex flex-col justify-center items-center ">
       {/* Progress Track */}
-      <div className="relative w-full h-1 bg-gray-300 rounded-full">
+      <div className="relative w-full h-1 bg-foreground rounded-full">
         {/* Filled Progress */}
         <div
-          className="absolute top-0 left-0 h-1 bg-green-900 rounded-full transition-all duration-300"
+          className="absolute top-0 left-0 h-1 bg-foreground rounded-full transition-all duration-300"
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -30,15 +30,15 @@ const ProgressBar = ({ step, totalSteps = 3 }: ProgressBarProps) => {
             <li
               key={stepNumber}
               className={`w-7 h-7 rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300
-                ${isCompleted ? "bg-green-900 text-white" : ""}
+                ${isCompleted ? "bg-foreground text-white" : ""}
                 ${
                   isActive
-                    ? "border-2 border-green-100 bg-white text-green-600"
+                    ? "border-2 border-foreground bg-white text-foreground"
                     : ""
                 }
                 ${
                   !isCompleted && !isActive
-                    ? "bg-white border-2 border-gray-300 text-gray-400"
+                    ? "bg-white border-2 border-foreground text-foreground"
                     : ""
                 }
               `}

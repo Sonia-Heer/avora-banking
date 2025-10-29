@@ -11,6 +11,7 @@ import Category from "@/components/Category";
 import { getLoggedInUser } from "@/lib/actions/user.actions";
 import { getAccount, getAccounts } from "@/lib/actions/bank.actions";
 import { countTransactionCategories } from "@/lib/utils";
+import TransactionChart from "@/components/TransactionsChart";
 
 const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
   const currentPage = Number(page as string) || 1;
@@ -27,35 +28,37 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
   const categories: CategoryCount[] = countTransactionCategories(transactions);
   const banks = accountsData.slice(0, 2);
 
+  console.log(account);
   return (
-    <section className="h-screen max-xl:max-h-screen text-white bg-[#f6f6f6]">
+    <section className="h-screen">
       <HeaderBox
+        subtitle="Dashboard"
         type="greeting"
         title="Welcome back"
         user={loggedIn?.firstName || "Guest"}
-        subtext=""
+        subtext="Access and manage your account and transactions efficiently."
       />
 
       <div
         style={{
-          background: "linear-gradient(to bottom, black 10%, #f6f6f6 10%)",
+          background: "linear-gradient(to bottom, #141820 10%, #f6f6f6 10%)",
         }}
       >
-        <div className="max-w-[1650px] mx-auto px-6 md:px-20 pb-20 flex flex-col gap-6 md:gap-10">
-          <div className="flex flex-col md:flex-row gap-6 md:gap-10">
+        <div className="container pb-20 flex flex-col gap-6 md:gap-10">
+          <div className="flex flex-col lg:flex-row gap-6 md:gap-10">
             <TotalBalanceBox
               accounts={accounts.data}
               totalBanks={accounts.totalBanks}
               totalCurrentBalance={accounts.totalCurrentBalance}
             />
-            <div className="text-gray-800 flex items-center justify-center flex-1 bg-white rounded-[20px] shadow-xl">
-              Placeholder
+            <div className="data-container w-full">
+              <TransactionChart transactions={account.transactions} />
             </div>
           </div>
 
           <div className="flex flex-col xl:flex-row gap-6 md:gap-10">
-            <div className="flex flex-col md:flex-row xl:flex-col gap-6 md:gap-10 w-full">
-              <section className="pb-10 md:w-[50%] xl:w-[100%] min-w-[350px] m-auto">
+            <div className="flex flex-col lg:flex-row xl:flex-col gap-6 md:gap-10 w-full">
+              <section className="pb-10 lg:w-[50%] xl:w-[100%] min-w-[350px] m-auto">
                 {banks.length > 0 && (
                   <div className="relative flex flex-col items-center justify-center gap-5">
                     <div className="relative z-10">
@@ -81,9 +84,11 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
                 )}
               </section>
 
-              <section className="bg-white rounded-[20px] shadow-lg p-6 md:w-[50%] xl:w-[100%]">
+              <section className="data-container lg:w-[50%] xl:w-[100%]">
                 <div className="flex flex-col gap-6 md:gap-10">
-                  <h2 className="text-gray-500 text-[16px]">Top Categories</h2>
+                  <h2 className="text-lg font-semibold text-gray-700">
+                    Top Categories
+                  </h2>
                   <div className="space-y-5">
                     {categories.map((category) => (
                       <Category key={category.name} category={category} />
@@ -93,7 +98,7 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
               </section>
             </div>
 
-            <div className="bg-white rounded-[20px] shadow-lg p-6 w-full">
+            <div className="data-container">
               <RecentTransactions
                 accounts={accounts.data}
                 transactions={account.transactions}

@@ -48,16 +48,22 @@ const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
         <Button
           onClick={() => open()}
           disabled={!ready}
-          className="bg-green-900"
+          className="bg-brand-primary text-[14px] md:text-[14.8px]"
         >
           Connect bank
         </Button>
       ) : variant === "ghost" ? (
-        <Button onClick={() => open()} className="bg-green-600">
+        <Button
+          onClick={() => open()}
+          className="bg-brand-primary text-[14px] md:text-[14.8px]"
+        >
           Connect Bank
         </Button>
       ) : (
-        <Button onClick={() => open()} className="bg-green-900">
+        <Button
+          onClick={() => open()}
+          className="bg-brand-primary text-[14px] md:text-[14.8px]"
+        >
           Connect Bank
         </Button>
       )}

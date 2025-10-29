@@ -13,12 +13,12 @@ const BankCard = ({
     <div className="flex flex-col">
       <Link
         href={`/transaction-history/?id=${account.appwriteItemId}`}
-        className="relative flex h-[190px] w-full max-w-[320px] justify-between rounded-[20px] backdrop-blur-[10px] shadow-2xl"
+        className="bank-card"
       >
         <div className="bank-card_content">
           <div>
-            <h1 className=" font-semibold text-white">{account.name}</h1>
-            <p className="text-[18px] font-ibm-plex-serif font-black text-white">
+            <h2 className="font-semibold text-white">{account.name}</h2>
+            <p className="text-[18px] font-black text-white">
               {formatAmount(account.currentBalance)}
             </p>
           </div>
