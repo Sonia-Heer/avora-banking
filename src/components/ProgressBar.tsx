@@ -1,8 +1,8 @@
 import React from "react";
 
 type ProgressBarProps = {
-  step: number; // current step (1–4)
-  totalSteps?: number; // default to 4
+  step: number;
+  totalSteps?: number;
 };
 
 const ProgressBar = ({ step, totalSteps = 3 }: ProgressBarProps) => {
@@ -10,7 +10,6 @@ const ProgressBar = ({ step, totalSteps = 3 }: ProgressBarProps) => {
 
   return (
     <div className="relative flex flex-col justify-center items-center ">
-      {/* Progress Track */}
       <div className="relative w-full h-1 bg-foreground rounded-full">
         {/* Filled Progress */}
         <div
