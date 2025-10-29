@@ -11,7 +11,7 @@ import { getAccount, getAccounts } from "@/lib/actions/bank.actions";
 import { countTransactionCategories } from "@/lib/utils";
 import TransactionChart from "@/components/TransactionsChart";
 
-const Home = async ({ params, searchParams }: SearchParamProps) => {
+const Home = async ({ searchParams }: SearchParamProps) => {
   const sp = searchParams ? await searchParams : {};
   const page = Array.isArray(sp.page) ? sp.page[0] : sp.page;
   const currentPage = Number(page as string) || 1;
