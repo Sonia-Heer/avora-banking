@@ -91,10 +91,6 @@
     @apply flex flex-col md:flex-row justify-between items-start gap-6 rounded-[20px] bg-white text-tertiary-text border border-brand-primary ring-2 ring-brand-secondary hover:shadow-md hover:-translate-y-0.5 rounded-xl bg-white text-tertiary-text p-6 my-6 md:my-10;
   }
 
-  .auth-asset {
-    @apply md:flex items-center bg-[url(/placeholder.jpg)] bg-cover bg-center hidden;
-  }
-
   .auth-form {
     @apply flex w-full max-w-[530px] flex-col justify-center items-center gap-5 md:gap-8 p-6 md:p-20;
   }
