@@ -23,7 +23,6 @@ const TopMenu = ({ user }: SiderbarProps) => {
   return (
     <header className="top-menu">
       <div className="container flex items-center justify-between">
-        {/* Navigation */}
         <nav className="flex items-center gap-8">
           {sidebarLinks.map(({ label, route }) => {
             const isActive =
@@ -46,7 +45,6 @@ const TopMenu = ({ user }: SiderbarProps) => {
           })}
         </nav>
 
-        {/* Actions */}
         <div className="flex items-center gap-6">
           <PlaidLink user={user} />
           <div className="badge">

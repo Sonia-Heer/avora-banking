@@ -100,7 +100,6 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(submit)} className="flex flex-col">
-          {/* Select Source Bank */}
           <FormField
             control={form.control}
             name="senderBank"
@@ -126,7 +125,6 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
             )}
           />
 
-          {/* Transfer Note */}
           <FormField
             control={form.control}
             name="name"
@@ -152,7 +150,6 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
             )}
           />
 
-          {/* Recipient Details */}
           <div className="pt-8 pb-4">
             <h3 className="text-lg font-semibold text-foreground">
               Recipient Details
@@ -162,7 +159,6 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
             </p>
           </div>
 
-          {/* Email */}
           <FormField
             control={form.control}
             name="email"
@@ -183,7 +179,6 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
             )}
           />
 
-          {/* Receiver's Plaid ID */}
           <FormField
             control={form.control}
             name="sharableId"
@@ -204,7 +199,6 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
             )}
           />
 
-          {/* Amount */}
           <FormField
             control={form.control}
             name="amount"
@@ -225,7 +219,6 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
             )}
           />
 
-          {/* Submit Button */}
           <div className="pt-8 flex justify-end">
             <Button
               type="submit"

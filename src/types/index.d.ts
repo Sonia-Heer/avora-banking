@@ -244,7 +244,6 @@ declare interface PaymentTransferFormProps {
   accounts: Account[];
 }
 
-// Actions
 declare interface getAccountsProps {
   userId: string;
 }

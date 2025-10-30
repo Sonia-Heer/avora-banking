@@ -228,7 +228,6 @@ const AuthForm = ({ type }: { type: string }) => {
                     )}
                   </div>
 
-                  {/* Step navigation */}
                   <div className="flex justify-between">
                     {step > 1 && (
                       <Button

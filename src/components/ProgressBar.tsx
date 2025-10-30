@@ -10,16 +10,13 @@ const ProgressBar = ({ step, totalSteps = 3 }: ProgressBarProps) => {
 
   return (
     <div className="relative w-full flex flex-col items-center">
-      {/* Background line */}
       <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-300 rounded-full -translate-y-1/2">
-        {/* Progress line */}
         <div
           className="h-1 bg-foreground rounded-full transition-all duration-300"
           style={{ width: `${progress}%` }}
         />
       </div>
 
-      {/* Steps */}
       <ul className="relative flex justify-between w-full">
         {Array.from({ length: totalSteps }, (_, i) => {
           const stepNumber = i + 1;
