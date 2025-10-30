@@ -9,15 +9,18 @@ const ProgressBar = ({ step, totalSteps = 3 }: ProgressBarProps) => {
   const progress = ((step - 1) / (totalSteps - 1)) * 100;
 
   return (
-    <div className="relative flex flex-col justify-center items-center ">
-      <div className="relative w-full h-1 bg-foreground rounded-full">
+    <div className="relative w-full flex flex-col items-center">
+      {/* Background line */}
+      <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-300 rounded-full -translate-y-1/2">
+        {/* Progress line */}
         <div
-          className="absolute top-0 left-0 h-1 bg-foreground rounded-full transition-all duration-300"
+          className="h-1 bg-foreground rounded-full transition-all duration-300"
           style={{ width: `${progress}%` }}
         />
       </div>
 
-      <ul className="absolute top-[-14px] flex justify-between w-full">
+      {/* Steps */}
+      <ul className="relative flex justify-between w-full">
         {Array.from({ length: totalSteps }, (_, i) => {
           const stepNumber = i + 1;
           const isCompleted = stepNumber < step;
@@ -26,17 +29,13 @@ const ProgressBar = ({ step, totalSteps = 3 }: ProgressBarProps) => {
           return (
             <li
               key={stepNumber}
-              className={`w-7 h-7 rounded-full flex items-center justify-center text-sm font-medium transition-colors duration-300
-                ${isCompleted ? "bg-foreground text-white" : ""}
+              className={`w-7 h-7 rounded-full flex items-center justify-center text-sm font-medium z-10 transition-all duration-300
                 ${
-                  isActive
-                    ? "border-2 border-foreground bg-white text-foreground"
-                    : ""
-                }
-                ${
-                  !isCompleted && !isActive
+                  isCompleted
+                    ? "bg-foreground text-white border border-foreground"
+                    : isActive
                     ? "bg-white border-2 border-foreground text-foreground"
-                    : ""
+                    : "bg-white border-2 border-gray-300 text-gray-400"
                 }
               `}
             >

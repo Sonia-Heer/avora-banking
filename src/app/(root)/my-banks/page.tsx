@@ -16,13 +16,13 @@ const MyBanks = async () => {
   });
 
   return (
-    <section className="h-screen max-xl:max-h-screen text-white">
+    <section>
       <HeaderBox
         title="Accounts"
         subtext="Effortlessly manage your banking activites."
       />
 
-      <div className="p-6 md:p-20 max-w-[1650px] mx-auto">
+      <div className="pt-5 container pb-20">
         <h2 className="text-lg font-semibold text-foreground pb-4">
           Your cards
         </h2>
